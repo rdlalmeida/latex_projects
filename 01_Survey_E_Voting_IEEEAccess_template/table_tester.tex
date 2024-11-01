@@ -1,0 +1,143 @@
+\documentclass[10pt]{article}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\graphicspath{{Images/}}
+\usepackage{textcomp}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{lmodern}
+
+\setlength{\marginparwidth}{2cm}
+% \usepackage[disable]{todonotes}
+\usepackage{geometry}
+\usepackage{amsthm}
+\usepackage{subfiles}
+
+\usepackage{siunitx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[super]{nth}
+
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{xurl}
+
+\usepackage{authblk}
+
+\usepackage{hhline}
+
+\usepackage[labelsep=period]{caption}
+% \captionsetup[table]{name=TABLE}
+\renewcommand{\thetable}{\Roman{table}}
+
+\setlength\extrarowheight{2pt}
+
+\begin{document}
+\begin{table}[ht]
+    \footnotesize
+    \begin{tabular}{@{}p{1.0cm} p{4.0cm} p{2.0cm} p{2.0cm} m{2.5cm}  @{}}
+        \hline
+        \multicolumn{5}{c}{\textbf{Minimal Classification Criteria}} \\
+        \hline
+%-------------------------------------------------------- ACCURACY ------------------------------------------------------------------------------------------------------
+        \hline
+        \multicolumn{1}{c|}{\multirow{7}{*}{\rotatebox[origin=c]{90}{Accuracy}}} & \multicolumn{3}{c|}{Referenced as:} & Also referenced as: \\
+        \cline{2-5}
+        \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{"Accuracy" in:} & \multicolumn{1}{c|}{"Correctness" in:} & \multicolumn{1}{c|}{"Completeness" in:} & \multirow{5}{2.5cm}{Integrity, Data Integrity, System Integrity, Tally Correctness} \\
+        \cline{2-4}
+        \multicolumn{1}{c|}{\multirow{5}{*}{}} & \multicolumn{1}{c|}{
+        \multirow{3}{4.0cm}{\cite{Cranor2002}, \cite{Joaquim2003}, \cite{Cetinkaya2005}, \cite{Wu2017}, \cite{BenAyed2017}, \cite{Bistarelli2017}, \cite{Sadia2020}, \cite{Larriba2021}}} &
+        \multicolumn{1}{c|}{\multirow{5}{2.0cm}{\cite{Cohen1985}, \cite{Benaloh1994}, \cite{Benaloh1986a}, \cite{Sako1998}, \cite{Juang2002}, \cite{Hirt2000}, \cite{Araujo2010}, \cite{Locher2016}, \cite{Yu2018}, \cite{Adiputra2019}, \cite{Lyu2019}, \cite{Faour2019}, \cite{Mols2020}, \cite{Yang2020}}} &
+        \multicolumn{1}{c|}{\multirow{5}{2.0cm}{\cite{Fujioka1992}, \cite{Juang1997}, \cite{Ku1999}, \cite{Herschberg1997}, \cite{Lee2000}, \cite{Cruz2016}, \cite{Wu2017}, \cite{Chaieb2020}, \cite{Dimitriou2020}, \cite{Takabatake2021}}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{5}{*}{}} & \multicolumn{1}{c|}{\multirow{5}{*}{}} & \multicolumn{1}{c|}{\multirow{5}{*}{}} & \multicolumn{1}{c|}{\multirow{5}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{5}{*}{}} & \multicolumn{1}{c|}{\multirow{5}{*}{}} & \multicolumn{1}{c|}{\multirow{5}{*}{}} & \multicolumn{1}{c|}{\multirow{5}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{5}{*}{}} & \multicolumn{1}{c|}{\multirow{5}{*}{}} & \multicolumn{1}{c|}{\multirow{5}{*}{}} & \multicolumn{1}{c|}{\multirow{5}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{5}{*}{}} & \multicolumn{1}{c|}{\multirow{5}{*}{}} & \multicolumn{1}{c|}{\multirow{5}{*}{}} & \multicolumn{1}{c|}{\multirow{5}{*}{}} & \\ % [3ex]
+        \hline
+%-------------------------------------------------------- ELIGIBILITY ------------------------------------------------------------------------------------------------------
+        \hline
+        \multicolumn{1}{c|}{\multirow{8}{*}{\rotatebox[origin=c]{90}{Eligibility}}} & \multicolumn{3}{c|}{Referenced as:} & Also referenced as: \\
+        \cline{2-5}
+        \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{"Eligibility" in:} & \multicolumn{1}{c|}{"Authentication" in:} & \multicolumn{1}{c|}{"Collision freedom" in:} & \multirow{6}{2.5cm}{Soundness, Validity, Voter qualification, Ballot eligibility} \\
+        \cline{2-4}
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & 
+        \multicolumn{1}{c|}{\multirow{6}{4.0cm}{\cite{Fujioka1992}, \cite{Cetinkaya2005}, \cite{Herschberg1997}, \cite{Baraani1995}, \cite{Lee2000}, \cite{Cruz2016}, \cite{Bistarelli2017}, \cite{Vivek2020}, \cite{Wu2017}, \cite{Hardwick2018}, \cite{Chaieb2018}, \cite{Khan2018}, \cite{Zhang2018}, \cite{Bartolucci2018}, \cite{Vo-Cao-Thuy2019}, \cite{Adiputra2019}, \cite{Faour2019}, \cite{Mols2020}, \cite{Yang2020}, \cite{Chaieb2020}, \cite{Zaghloul2020}, \cite{Dimitriou2020}, \cite{Han2020}, \cite{Zhou2020}, \cite{Takabatake2021}, \cite{Larriba2021}, \cite{Hu2022}}} &
+        \multicolumn{1}{c|}{\multirow{6}{2.0cm}{\cite{Herschberg1997}, \cite{Wu2017}, \cite{Chaieb2020}, \cite{Dimitriou2020}}} &
+        \multicolumn{1}{c|}{\multirow{6}{2.0cm}{\cite{Benaloh1986a}, \cite{Sako1998}}} & \\
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \hline
+%-------------------------------------------------------- PRIVACY ------------------------------------------------------------------------------------------------------
+        \hline
+        \multicolumn{1}{c|}{\multirow{8}{*}{\rotatebox[origin=c]{90}{Privacy}}} & \multicolumn{3}{c|}{Referenced as:} & Also referenced as: \\
+        \cline{2-5}
+        \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{"Privacy" in:} & \multicolumn{1}{c|}{"Anonymity" in:} & \multicolumn{1}{c|}{"Confidentiality" in:} & \multirow{6}{2.5cm}{Ballot secrecy, Ballot privacy, Election secret, Maximal Ballot secrecy, Voter anonymity} \\
+        \cline{2-4}
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & 
+        \multicolumn{1}{c|}{\multirow{6}{4.0cm}{\cite{Fujioka1992}, \cite{Cetinkaya2005}, \cite{Herschberg1997}, \cite{Baraani1995}, \cite{Lee2000}, \cite{Cruz2016}, \cite{Bistarelli2017}, \cite{Vivek2020}, \cite{Wu2017}, \cite{Hardwick2018}, \cite{Chaieb2018}, \cite{Khan2018}, \cite{Zhang2018}, \cite{Bartolucci2018}, \cite{Vo-Cao-Thuy2019}, \cite{Adiputra2019}, \cite{Faour2019}, \cite{Mols2020}, \cite{Yang2020}, \cite{Chaieb2020}, \cite{Zaghloul2020}, \cite{Dimitriou2020}, \cite{Han2020}, \cite{Zhou2020}, \cite{Takabatake2021}, \cite{Larriba2021}, \cite{Hu2022}}} &
+        \multicolumn{1}{c|}{\multirow{6}{2.0cm}{\cite{Herschberg1997}, \cite{Wu2017}, \cite{Chaieb2020}, \cite{Dimitriou2020}}} &
+        \multicolumn{1}{c|}{\multirow{6}{2.0cm}{\cite{Benaloh1986a}, \cite{Sako1998}}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \hline
+%-------------------------------------------------------- VERIFIABILITY ------------------------------------------------------------------------------------------------------
+        \hline
+        \multicolumn{1}{c|}{\multirow{8}{*}{\rotatebox[origin=c]{90}{Verifiability}}} & \multicolumn{3}{c|}{Referenced as:} & Also referenced as: \\
+        \cline{2-5}
+        \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{"Verifiability" in:} & \multicolumn{1}{c|}{"Transparency" in:} & \multicolumn{1}{c|}{"Auditability" in:} & \multirow{6}{2.5cm}{Full-Traceability, Dispute-freeness, Verifiable elections, Voting verifiability} \\
+        \cline{2-4}
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & 
+        \multicolumn{1}{c|}{\multirow{6}{4.0cm}{\cite{Fujioka1992}, \cite{Sako1994}, \cite{Sako1998}, \cite{Cetinkaya2005}, \cite{Cramer1997}, \cite{Cramer1996}, \cite{Herschberg1997}, \cite{Araujo2010}, \cite{Baraani1995}, \cite{Lee2000}, \cite{Ibrahim2003}, \cite{Zhao2016}, \cite{Cruz2016}, \cite{BenAyed2017}, \cite{Bistarelli2017}, \cite{Vivek2020}, \cite{Wu2017}, \cite{Liu2017}, \cite{Hardwick2018}, \cite{Chaieb2018}, \cite{Khan2018}, \cite{Yu2018}, \cite{Vo-Cao-Thuy2019}, \cite{Adiputra2019}, \cite{Lyu2019}, \cite{Chaieb2019}, \cite{Lopes2019}, \cite{Sadia2020}, \cite{Mols2020}, \cite{Chaieb2020}, \cite{Killer2020}, \cite{Zhang2020}, \cite{Dimitriou2020}, \cite{Alvi2020}, \cite{Han2020}, \cite{Zhou2020}, \cite{Takabatake2021}, \cite{Larriba2021}, \cite{Verma2022}, \cite{Alvi2022}, \cite{Hu2022}}} &
+        \multicolumn{1}{c|}{\multirow{6}{2.0cm}{\cite{Liu2017}, \cite{Vivek2020}, \cite{Verma2022}, \cite{Lopes2019}, \cite{Sadia2020}}} &
+        \multicolumn{1}{c|}{\multirow{6}{2.0cm}{\cite{Zhang2018}, \cite{Bistarelli2017}, \cite{Vivek2020}, \cite{Sadia2020}, \cite{Liu2017}}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \multicolumn{1}{c|}{\multirow{6}{*}{}} & \\ % [3ex]
+        \hline
+%-------------------------------------------------------- ROBUSTNESS ------------------------------------------------------------------------------------------------------
+        \hline
+        \multicolumn{1}{c|}{\multirow{9}{*}{\rotatebox[origin=c]{90}{Robustness}}} & \multicolumn{3}{c|}{Referenced as:} & Also referenced as: \\
+        \cline{2-5}
+        \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{"Robustness" in:} & \multicolumn{1}{c|}{"Fairness" in:} & \multicolumn{1}{c|}{"Coercion-Resistance" in:} & \multirow{6}{2.5cm}{Receipt-Freeness, Consistency, Data Integrity, Dependability, Irrevocability, Soundness, Uncoercibility} \\
+        \cline{2-4}
+        \multicolumn{1}{c|}{\multirow{7}{*}{}} & 
+        \multicolumn{1}{c|}{\multirow{7}{4.0cm}{\cite{Cramer1996}, \cite{Rjaskova2002}, \cite{Lee2000}, \cite{Cruz2016}, \cite{Takabatake2021}, \cite{Zhang2020}, \cite{Mols2020}, \cite{Chaieb2019}, \cite{Adiputra2019}, \cite{Vo-Cao-Thuy2019}, \cite{Wu2017}, \cite{Faour2019}, \cite{Chaieb2018}, \cite{Chaieb2020}, \cite{Han2020}, \cite{Lyu2019}, \cite{Larriba2021}}} &
+        \multicolumn{1}{c|}{\multirow{7}{2.0cm}{\cite{Cetinkaya2005}, \cite{Juang1997}, \cite{Juang1996}, \cite{Juang2002}, \cite{Ku1999}, \cite{Lee2000}, \cite{Zhang2020}, \cite{Mols2020}, \cite{Chaieb2019}, \cite{Adiputra2019}, \cite{Vo-Cao-Thuy2019}, \cite{Hardwick2018}, \cite{Wu2017}, \cite{Faour2019}, \cite{Chaieb2018}, \cite{Chaieb2020}, \cite{Xu2020}, \cite{Han2020}, \cite{Zhou2020}, \cite{Vivek2020}, \cite{Takabatake2021}, \cite{Alvi2022}, \cite{Hu2022}, \cite{Li2022}}} &
+        \multicolumn{1}{c|}{\multirow{7}{2.0cm}{\cite{Araujo2010}, \cite{Chaieb2020}, \cite{Chaieb2019}, \cite{Adiputra2019}, \cite{Vo-Cao-Thuy2019}, \cite{Wu2017}, \cite{Hardwick2018}, \cite{Chaieb2018}, \cite{Zaghloul2020}, \cite{Dimitriou2020}, \cite{Han2020}, \cite{Hu2022}}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \\ % [3ex]
+        \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \multicolumn{1}{c|}{\multirow{7}{*}{}} & \\ % [3ex]
+        \hline
+        \hline
+    \end{tabular}
+\caption{Statistical analysis of the classification criteria mentioned in the publication set considered}
+\label{tab:e-voting-classification-criteria}
+\end{table}
+    
+    \bibliographystyle{IEEEtran}
+    \bibliography{surveyBibliography}
+
+\end{document}
+\endinput
+%%
+%% End of file `elsarticle-template-num.tex'.

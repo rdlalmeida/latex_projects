@@ -1,0 +1,118 @@
+\documentclass[10pt]{article}
+
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{Images/}}
+\usepackage{subfiles}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{lmodern}
+\usepackage[
+    backend=biber,
+    bibencoding=latin1
+]{biblatex}
+\usepackage{todonotes}
+
+\usepackage{booktabs}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[nottoc,numbib]{tocbibind}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0, 0.6, 0}
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{mauve}{rgb}{0.5, 0, 0.82}
+
+\lstset{
+    frame=tb,
+    language=Java,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3
+}
+
+\hypersetup{
+    pdftitle={Proposal Article},
+    pdfauthor={Ricardo Almeida},
+    pdfsubject={Non Fungible Token Implementation},
+    pdfkeywords={blockchain, non fungible tokens, cadence, flow, ethereum, solidity},
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=1,
+    colorlinks=true,
+    pdfstartview=Fit,
+    pdfpagemode=UseOutlines,
+    pdfpagelayout=SinglePage,
+    linkcolor=black
+}
+
+\hyphenation{block-chain}
+\hyphenation{Ether-eum}
+\hyphenation{ether-eum}
+\hyphenation{break-throughs}
+
+\usepackage{authblk}
+\bibliography{Bibliography.bib}
+
+\author[1]{Ricardo Lopes Almeida}
+\author[2]{Fabrizio Baiardi}
+\author[3]{Damiano Di Francesco Maesa}
+\author[4]{Laura Ricci}
+
+\affil[1, 2, 3, 4]{Dipartimento di Informatica, Università di Pisa, Italia}
+\affil[1]{Università di Camerino, Italia}
+
+\title{Contract-based Storage versus Account-based Storage: a Comparison among Implementation Strategies for Non-Fungible Tokens }
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    Blockchain and Distributed Ledger Technology (DLT) has been on the forefront of the latest advancements in commercial cryptographic applications. These technologies produced the first instances of decentralised digital currencies, i.e., cryptocurrencies, but these are but one of many potential applications of this technology. Non-Fungible Tokens alongside with the decentralised Virtual Machine idea increased considerably the scope of possibilities offered by blockchain and DLT.
+    \par
+    Non-Fungible Tokens (NFTs) surge as a functional inversion of "normal" cryptocurrency tokens and thus also provide a new spectrum of utilization that is still being explored in research. The non-fungibility aspect alongside with a blockchain implementation gives NFTs a "digital uniqueness" that was impossible to achieve with centralised approaches and the potential uses for such characteristics are still being investigated. NFTs can provide a clear and simpler mechanism to establish ownership of objects, digital and otherwise, in a blockchain. The potential for this technology warrants a proper investigation of these tokens.
+    \par
+    This paper selected two commercial and public blockchains with well known NFT capabilities and use them to create, deploy and compare NFT implementations. For this purpose Ethereum, one of the most experienced, popular and general-purpose blockchains for research; and Flow, a newer, smaller, less popular but highly NFT-specialized blockchain, were chosen for this exercise.
+    \par
+\end{abstract}
+
+
+%% \linenumbers
+
+%% main text
+\subfile{./Sections/01_Introduction.tex}
+
+\subfile{./Sections/02_Related_Works.tex}
+
+\subfile{./Sections/03_Background.tex}
+
+\subfile{./Sections/04_NonFungibleTokens.tex}
+
+\subfile{./Sections/05_Solidity-Ethereum_NFT_implementation.tex}
+
+\subfile{./Sections/06_Cadence-Flow_NFT_implementation.tex}
+
+\subfile{./Sections/07_Results_and_Comparison.tex}
+
+\subfile{./Sections/08_Conclusion.tex}
+
+\printbibliography
+
+\listoftodos
+\end{document}

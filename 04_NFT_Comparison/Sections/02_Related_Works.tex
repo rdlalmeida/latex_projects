@@ -1,0 +1,22 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../Images}}}
+
+\begin{document}
+\section{Related Works}
+\label{sec:related_works}
+The body of research work around blockchain is quite limited and with NFTs it becomes even smaller due to how recent these technologies are. In some aspects, the technological framework of blockchain as a whole is being developed as we speak. Nonetheless, research in NFT technology and applications is an active field and has produced a significant body of work but centered on specific applications of NFTs. So much so that this in itself as justified the publication of several literature survey studies to make sense of the development of the field of NFT applications.
+\par
+As example, \cite{Far2022}, \cite{Wajiha2022}, and \cite{Hammi2023} provide somewhat extensive surveys of NFT applications, but they do so in a more generalised fashion, with a focus on the potential applications and expected results from the introduction of NFT-based logistics as a new approach to solve existing problems. They do a good job in enumerating the main challenges preventing a wider adoption of the technology and do present a through analysis of the main standards that promote the required interoperability in such applications.
+\par
+Additionally, \cite{Wang2021}, \cite{Bao2022}, and \cite{Ali2023} presented similar surveys but with more emphasis in the challenges and opportunities of the technology, but with lesser technical detail. The more detailed surveys are also the more recent, namely \cite{Razi2024}, and \cite{Guidi2023}. These provide a thorough synthesis of the evolution of this field, with plenty of references to concrete proposals identifying a specific instance where NFTs where used to achieve a solution.
+\par
+In all of the cases considered, all emphasised the use of existing NFT standards but their mentions were limited the to the ERC standards from the Ethereum network, which is understandable given that most projects referenced in this articles are based in Solidity smart contracts deployed in the Ethereum network.Though some mention the existence of other blockchains with NFT capabilities, only \cite{Wang2021}, \cite{Razi2024}, and \cite{Guidi2023} mention the Flow blockchain specifically, with \cite{Guidi2023} providing the most detailed introduction.
+
+\subsection{Our Contribution}
+None of the cases considered made any mentions to the architecture behind how NFTs are implemented, either in Ethereum or any of the alternative blockchains mentioned, nor did any inference on the mechanics of data storage, specifically NFT metadata storage. As far as this writing, no other article to our knowledge was published centered on NFT storage mechanics nor considered other blockchain architectures with sufficient detail to enact a fair comparison. As such, we propose the following contributions to this research field:
+\begin{enumerate}
+    \item{Compared to other publications in this area, we provide a more focused and detailed introduction to the architectural aspects used to implement a smart contract capable of minting and operating with NFTs, with emphasis on the storage mechanism and control access structures used.}
+    \item {We also provide an introduction to a less popular but more application specific blockchain towards establishing a reference point for future comparisons.}
+    \item {Given that the Flow blockchain was created towards solving the technological issues that their creators encountered when implementing of the first NFTs projects in the Ethereum network, we also provide an objective comparison between the process and end result of implementing basic NFT projects in both blockchains.}
+\end{enumerate}
+\end{document}

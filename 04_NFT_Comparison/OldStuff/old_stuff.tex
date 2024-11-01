@@ -1,0 +1,91 @@
+Our proposal follows the research momentum in the literary analysis and explore one of the latest blockchain features introduced, namely, \textit{Non-Fungible Tokens}.
+% NFT Standards
+
+\subsection{Non-Fungible Tokens}
+\textit{Non-Fungible Tokens (NFTs)} are one of the latest features in blockchain technology \cite{Valeonti2021}. Aptly so, NFTs have a disruption potential only comparable to cryptocurrencies themselves. The main difference between an NFT and a cryptocurrency token, such as Bitcoin or Ether, is that, as the name imply, NFTs are indivisible and not interchangeable. Unlike cryptocurrencies where all tokens have the same value, i.e., the value of each Bitcoin varies but each Bitcoin in existence has the same value. In opposition, two NFTs from the same set, minted sequentially to the same blockchain and even with the same metadata can have completely different fiat currency values, which often depend on a number of factors exterior to the NFT itself. Also, unlike Bitcoins and Ethers, NFTs can only be traded in discrete values and not in fractions of a unit like normal cryptocurrencies. A user is not able to transfer part of an NFT to another, as it can easily do with normal cryptocurrencies.
+\par
+NFTs represent unique digital objects in the underlying blockchain, and they innovate the concept of \textit{digital ownership} by associating metadata to these constructs. Associating these elements to a NFT with a unique identifier also individualizes data elements in the blockchain \cite{Fairfield2021}. The metadata itself, which can be a piece of text, an image, a video clip, etc. is not protected from copy or even from being read at will by any user. NFTs are stored publicly in the blockchain in such a way that their contents can be consulted at will. The unalterable nature of every blockchain protects them from tampering, from being transferred to another user without the owner's consent, deletion, etc.
+\par
+The obvious applicability of this concept in the electronic voting context is too strong to be ignored. Our proposal uses configurable NFTs to abstract the key element of any e-voting system: the vote itself, and the digital uniqueness of these tokens to enact security criteria such as those in section \ref{stateoftheart}, alongside with the properties of these tokens in the e-voting context.
+\par
+The NFT concept was introduced in the Ethereum blockchain and is regulated by the \textit{Ethereum Request for Comments \#721}, or simply, \textit{ERC-721}, which defined the base standard, and \textit{ERC-115} which complemented the initial standard \cite{Ali2023}.
+\par
+
+\subsection{Implementation details:}
+Our proposal is based on the usage of Smart Contracts to define the characteristics of the resources to be created and used. Figure \ref{fig:basic_architecture} provides a bird's eye perspective to the base architecture, with the fundamental solution components identified:
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../Images/BasicArchitecture.png}
+    \caption{Basic architecture of an NFT based e-voting system.}
+    \label{fig:basic_architecture}
+\end{figure}
+
+Most of this system resides in the blockchain either in the form of Smart Contracts, NFTs abstracting votes, or even user storage. This is important for system transparency: Smart Contracts have their code public for consultation in the blockchain. This avoids the preparation of the system for software auditability.
+
+\subsection{Solution Components}
+\subsubsection{Regional Virtual Voting Station (RVVS)}
+\label{regional_virtual_voting_stations}
+This component creates a "middle man" between the voter and the tallying contract that computes the final tally. Introducing this middle element increases the decentralization of the solution by using these RVVS for temporary vote storage, instead of polling everything into the tallying contract, which would create a single point of attack for this solution.
+\par
+A RVVS is essentially an account whose access is controlled by the organization overseeing the voting exercise. Additional functionalities can be added to this component via deployed Smart Contracts, such as the ability to mint Envelope NFT on demand, voter eligibility verification, vote verifiability functions, etc. The account aspect of this component includes an address-based storage space, that can be configured to be accessible by the account holder only, and that is used to temporary store Envelope and Vote NFTs before the final tally calculation.
+\par
+From the system security perspective, each RVVS implements its own pair of asymmetrical encryption schemes, or even multiple schemes/key pairs for added security, which are used to implement voter privacy while keeping individual verifiability.
+
+\subsubsection{Tallying Contract}
+Similar to the RVVS described above, the Tallying Contract is characterized by a set of functions enabled through the deployment of Smart Contracts, as well as a unique storage location that houses the Vote NFT once these are decoupled from the containing Envelope NFT.
+\par
+This contract is common to the system and therefore its also used to issue the standardized Vote NFT. In order to mint and transfer a blank Vote NFT according to the options available to the current exercise, the request must come from a valid RVVS account, i.e., only RVVS can request blank Vote NFTs and nobody else. Limiting the transferable account addresses is possible via \textit{whitelisting}, a common strategy used to protect contracts that deal with sensitive information. Removing the Vote NFT minting duties from the RVVS to the Tallying contract simplifies the system, since the minting function needs only to be in one contract, while increasing security by taking advantage of the \textit{address whitelisting} strategy.
+A more detailed explanation of these mechanics is presented in the next section.
+
+\paragraph{Envelope NFT}
+This resource is used for transport mainly but it is possible to extend some of its functionality and internal characteristics to increase trust in the system by establishing methods that implement \textit{vote verifiability}, \textit{system transparency} and \textit{voter privacy}, namely the following set of internal parameters:
+\begin{enumerate}
+    \item {A unique Envelope ID}, that identifies a particular Envelope Resource in the blockchain and maintained for audit purposes.
+    \item {Voter identification data}, which can be a simple voter identification number or a more through description, including name, address, age, etc., which is always encrypted with the issuing RVVS's public encryption key before returning, to increase voter privacy and security.
+    \item {A hash digest of the Vote NFT token contents} used to execute a vote verification function. A thorough explanation on how this is used to establish vote verifiability is found in section \ref{vote_verifiability}.
+    \item {A nested Vote NFT} containing the encrypted vote data.
+\end{enumerate}
+Envelope NFT can only be minted by the RVVS contract upon verification of the voter's eligibility for the current election and always with a nested and blank Vote NFT nested into it. We cannot envision any threats derived from issuing an Envelope NFT without a nested Vote NFT, but that option is disable by default for sake of consistency.
+
+\paragraph{Vote NFT}
+The internal resource is the simpler one, as stated in figure \ref{fig:evn_mechanics}. The Vote NFT contains the actual choice of the voter. Every voting exercise requires an initial customization of this token by reflecting the choices available to the voter in its internal parameters. This is a trivial operation and can be automated with a single Smart Contract.
+
+\subsubsection{Envelope and Vote NFT (EVN)}
+The EVN component is a combination between the component used to record the voter's choice - the Vote NFT - with the component used for transport - the Envelope NFT.
+\par
+The idea with this approach is to establish a point of decoupling between the voter data, which belongs exclusively to the Envelope NFT, from the choices made by the same voter, which are written in the Vote NFT. Both NFT are to be linked during part of the process. During this period it is possible to replace a vote by submitting a new Vote NFT with an existing Envelope NFT because the link between voter and vote still exists. To achieve full voter privacy, this link is severed.
+\par
+This can be used to create two independent data sets, one for the envelope and another for the token, which can be decoupled easily and transparently, since this decoupling operation is coded in a contract function open for consultation by default and can execute this decoupling automatically and without revealing any voter information. This also eliminates any human intervention, a threat to voter privacy in traditional vote-by-mail schemes.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../Images/EVN_mechanics.png}
+    \caption{Overview of the Envelope and Vote NFTs internal characteristics}
+    \label{fig:evn_mechanics}
+\end{figure}
+
+
+This is the simplest element in the system, and also the only purely centralizing one. Though there are some alternatives to circumvent the usage of a centralized database to determine the eligibility of a voter, using a reference from a trusted third party is still the most efficient strategy to overcome this issue. The centralized database does provide a single point of attack to the system, which adversaries can use to corrupt the voting exercise by, for example, adding fake electors to a list or enable someone that has been deemed ineligible by the trusted third party according to the exercise's rules. This attack has to be taken into account to assess if the flexibility and ease of operation resulting from a centralized voter database compensates the potential for corruption that it implies.
+\par
+The centralized database can ensure the voting exercise's safety. By identifying the weakest point of the system, as well as by characterizing the type of cyberattacks that can affect it, the system can be reinforced. A potential solution to this issue is to apply blockchain principles to non-distributed databases. For example, we can protect a closed list of eligible voters by a public hash digest of the database state and by ensuring the voting system validates it before determining the eligibility of a voter, exactly like a blockchain protocol determines the integrity of its blocks by preserving the hash digest sequence between consecutive blocks, establishing a Merkle tree in the process. An adversary is unable to add, remove or alter any of the centralized database's data without changing the hash digest, and the probability of an adversary changing its data in such a way that it benefits him while maintaining the same hash are astronomically small. If this digest is publicized in a blockchain, this protects the digest itself against tampering and any unwanted modifications to the data set are easily detectable.
+\par
+
+
+An approach that we identified in later proposals from the decentralised set is the definition of \textit{generic} blockchains as a development medium, while focusing the majority of the proposal on the details of the e-voting system. These proposals are able to provide complete systems that can be theoretically implemented in any blockchain that offer the base characteristics and functionalities defined in the generic implementation assumed. This approach results from an ecosystem of public blockchains that is still expanding. Early proposals had only a handful of possibilities regarding the type of blockchain they could base their solution on. It was feasible for these authors to explore the advantages and disadvantages of choosing blockchain A over blockchain B. But after a few years, the myriad of potential suitors in this regard made studies of this nature consume too much time and effort. As such, some authors, such as \cite{Adiputra2019}, \cite{Chaieb2019}, \cite{Yang2020}, \cite{Sadia2020}, \cite{Zaghloul2020}, and \cite{Zhang2020}, began by assuming a set of functionalities and features from a generic blockchain construct and devising their system on top of these assumptions.
+\par
+
+To some extent, NFTs are a type of cryptocurrency. From the point of view of a blockchain, they behave very similarly to other "fungible" tokens: they can be minted by invoking a function in a smart contract, use transactions to exchange ownership and their fiat currency value fluctuates significantly. The main difference is in their interchangeability, or more precisely, the lack of it. Alice can send 1 Ether to Bob and receive another Ether from him without problems or loss of value (other than the gas used in the transactions). This is because Ether is a fungible cryptocurrency, which implies two things: 1. one unit of it is exchangeable by any other unit of the same cryptocurrency since all have the same value, and 2. it can be traded in a fractional value, i.e., Alice can send 0.4 or 1.74 ETH to Bob instead of a full Ether unit.
+\par
+NFTs do not share these characteristics: two NFTs minted one after the other, with the same digital properties apart from the serial number, can have different values. Also, NFTs can only be traded discretely, i.e., Alice can transfer 1 or 10 NFTs to Bob but not 1.5 for example.
+This new token concept has been so popular since its inception that more and more blockchains introduced better capabilities to handle these tokens. Despite a larger number of academic and non-academic projects exploring these new constructs, NFTs barely broke into e-voting research landscape. We present the first complete e-voting system that uses NFTs as main elements to abstract and protect votes.
+
+
+% @ Related_Works
+The main discovery from this analysis is an overlap between academic proposals and real-world systems, or, more precisely, the lack thereof. Private companies developed most of the real-world remote solutions indicated by being awarded government development contracts. As a consequence, specific technical details are kept private as patented intellectual property, with any technical information about them available only from review reports, which makes any further analysis a difficult endeavour. The complexity and resource hungriness of centralised solutions are characterised by the requirement of government-scale investments to achieve minimal implementation. In large-scale elections, the scalability effort quickly grows out of the capacity of small organisations and individuals, leaving governments as the only organisations with enough resources to implement them. This generation of e-voting systems proved that the concept is sound and that it is possible to use electronic means to establish elections with greater accuracy and security for their participants.
+
+This proposal is based in two implementations in two different blockchains. We omit the introduction to the Ethereum blockchain on the assumption that, since it is the most used blockchain in academic research, it is easy for the reader to familiarize himself/herself with it if needed. The Flow blockchain is still relatively unknown, especially within the academic context. This section provides a brief introduction to this blockchain, for context.
+\par
+
+
+

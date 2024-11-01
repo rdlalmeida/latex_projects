@@ -1,0 +1,107 @@
+\documentclass[10pt]{article}
+
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{Images/}}
+\usepackage{subfiles}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{lmodern}
+\usepackage[
+    backend=biber,
+    bibencoding=latin1
+]{biblatex}
+
+\usepackage{booktabs}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[nottoc,numbib]{tocbibind}
+
+\hypersetup{
+    pdftitle={Proposal Article},
+    pdfauthor={Ricardo Almeida},
+    pdfsubject={Electronic Voting Framework based on Blockchain},
+    pdfkeywords={blockchain, electronic voting},
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=1,
+    colorlinks=true,
+    pdfstartview=Fit,
+    pdfpagemode=UseOutlines,
+    pdfpagelayout=SinglePage,
+    linkcolor=black
+}
+
+\hyphenation{block-chain}
+\hyphenation{Ether-eum}
+\hyphenation{ether-eum}
+\hyphenation{break-throughs}
+
+\usepackage{authblk}
+\bibliography{Bibliography.bib}
+
+
+\author[1]{Ricardo Lopes Almeida}
+\author[2]{Fabrizio Baiardi}
+\author[3]{Damiano Di Francesco Maesa}
+\author[4]{Laura Ricci}
+
+\affil[1, 2, 3, 4]{Dipartimento di Informatica, Università di Pisa, Italia}
+\affil[1]{Università di Camerino, Italia}
+
+\title{Towards a Fully Mobile, blockchain-based Electronic Voting system using Non-Fungible Tokens}
+
+\begin{document}
+
+    \maketitle
+
+    \begin{abstract}
+    %% Text of abstract
+    Research in electronic voting systems has been constant and fruitful since the 1970s, when the introduction of commercial cryptography provided the tools and methods for such critical operations. Yet, save for a few exceptions for testing purposes, no remote electronic voting system has been employed systematically.
+    \par
+    A significant breakthrough occurred in 2009 with the introduction of the decentralised computational paradigm through Bitcoin, the world's first cryptocurrency, and the distributed ledger technology that supports it. Researchers soon started applying decentralised concepts and using distributed ledger's features to propose e-voting systems from a decentralised approach, which revealed itself superior right from the start. As a consequence, the field moved to use the new paradigm soon after, and new proposals employing the latest distributed ledger features are still appearing.
+    \par
+    This article characterises the evolution of e-voting research through the years and presents a novel architecture based on smart contracts and Non-Fungible Tokens (NFTs), a recent addition to the distributed ledger ecosystem. We explore the inherent advantages of this new concept, as well as its development framework, to present the architecture of a fully mobile, decentralised electronic voting system using NFTs as the main vote abstractor.
+    \end{abstract}
+
+
+    %% \linenumbers
+    
+    %% main text
+    \section{Introduction}
+        \label{introduction}
+        \subfile{./Sections/1_Introduction.tex}
+    
+    \section{State of the Art}
+        \label{stateoftheart}
+        \subfile{./Sections/2_StateOfTheArt.tex}
+    
+    \section{Introduction to Non-Fungible Tokens (NFT)}
+        \label{introduction_nfts}
+        \subfile{./Sections/3_Introduction_to_NFTs.tex}
+    
+    \section{General Approach to a NFT-based e-voting system}
+        \label{general_approach}
+        \subfile{./Sections/4_GeneralApproach.tex}
+    
+    \section{Security Analysis and Additional Features}
+        \label{features_and_security}
+        \subfile{./Sections/5_FeaturesSecurityAnalysis.tex}
+    
+        
+    \section {Conclusion}
+    \label{conclusion}
+    Electronic voting systems are still an active area of research and a playground from which some important cryptographic concepts have been derived. It has evolved around the technology that supports it, which has transitioned this research area to a new age regarding the fundamental approach considered, thanks to its recent integration with blockchain technology.
+    \par
+    This proposal presents a decentralised, remote electronic voting system that takes advantage of the properties of Non-Fungible Tokens, as well as the Flow blockchain and its Resource-Oriented Paradigm. The organisation and features offered by this new approach support the design of a private, secure, transparent, verifiable, and mobile voting system whose proof of concept is to be derived from the strategy presented in this text.
+    \par
+    This also proves the suitability of the NFT concept as a transport mechanism within public networks.
+    \par
+    This paper defines a concrete road map to produce a working prototype to prove the implementation of the set of security criteria in Section \ref{stateoftheart}, as a strategy to achieve a truly secure and remote electronic voting system. Another important aspect that determines the usability of this proposal is scalability; specifically, what are the limits of the supporting blockchain regarding the scope of operation of this system.
+
+\printbibliography
+
+\end{document}
