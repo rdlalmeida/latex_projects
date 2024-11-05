@@ -12,7 +12,7 @@ We begun this project by implemented a ERC-721 compliant NFT minting contract, r
 \begin{figure}[htp]
     \centering
     \includegraphics[width=0.85\textwidth]{../Images/04_Solidity_NFT_Contract_Arch.png}
-    \caption{General organization of a Solidity NFT minting contract}
+    \caption{General organisation of a Solidity NFT minting contract}
     \label{fig:solidity_contract_architecture}
 \end{figure}
 
@@ -43,7 +43,7 @@ In its most basic form, a standard Ethereum token, i.e., ERC721 compliant token,
 \subsubsection{Events}
 Blockchain events are the main information mechanism to detect transaction results and contract changes in the network. Obtaining an output from functions than do not return any values, such as nft mints and token transfers, from any blockchain is quite difficult because one has to look for the correct output from the agglomerate of all the outputs of the various distributed accesses that the blockchain is attending. For a popular and sizeable blockchain, such as Ethereum, that task becomes prohibitive. Events solve this limitation. Event logging is processed differently and these can be indexed, which allows for their fast retrieval and for software tool to pool for these at intervals (event listeners). The ERC721 defines three events by default, one to be emitted whenever a token is transferred(\textit{Transfer}) and two for whenever the approval mappings are modified. These events require arguments to be emitted, which allows for the transmission of specific information with more generalist events. For example, the \textit{Transfer} event, when captured, also indicated the two addresses involved in the transfer and the \verb|tokenId| of the token transferred. The emission of these events is triggered by ERC721 functions, so the whole process is automated and inherited from the contract interface.
 
-\subsection{Functions}
+\subsubsection{Functions}
 Functions such \textit{balanceOf} and \textit{ownerOf} are self-explanatory and the approval related functions were covered in Sec. \ref{sec:mappings}. The only function inherited from the ERC721URIStorage standard, \textit{tokenURIs} is also quite simple: it receives a \verb|tokenId| as argument and returns the string defined as metadata for the token identified. The \textit{supportsInterface} is used to determine if the contract in question does conform to the ERC721 standard (or any other standards indicated by the contract), and it is not just something the developer is labeling the contract with, but the expected contract interface was not correctly implemented.
 \par
 Finally, the last functions indicated in Fig. \ref{fig:solidity_contract_architecture} are used to transfer the token to a \verb|to| address. Both functions do what their name suggests, but the "safe" version does additional checks, namely if the receiving address (parameter \verb|to|) is a contract address and, if so, test if the correct NFT receipt was returned from the contract.
