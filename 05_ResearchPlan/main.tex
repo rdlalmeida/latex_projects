@@ -1,0 +1,125 @@
+\documentclass[12pt]{article}
+
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{Images/}}
+\usepackage{subfiles}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{lmodern}
+\usepackage[
+    backend=biber,
+    bibencoding=latin1
+]{biblatex}
+\usepackage{todonotes}
+
+\usepackage{booktabs}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[nottoc,numbib]{tocbibind}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0, 0.6, 0}
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{mauve}{rgb}{0.5, 0, 0.82}
+
+% \renewcommand\thesection{\Alpha{section}}
+% \renewcommand\thesubsection{\thesection.\alpha{subsection}}
+
+\lstset{
+    frame=tb,
+    language=Java,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3
+}
+
+% TODO: Edit this one
+\hypersetup{
+    pdftitle={Research Plan},
+    pdfauthor={Ricardo Almeida},
+    pdfsubject={Dottorato di Ricerca di Interesse Nazionale in Blockchain and Distributed Ledger Technology - Social Systems and Smart Societies},
+    pdfkeywords={blockchain, electronic voting},
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=1,
+    colorlinks=true,
+    pdfstartview=Fit,
+    pdfpagemode=UseOutlines,
+    pdfpagelayout=SinglePage,
+    linkcolor=black
+}
+
+\hyphenation{block-chain}
+\hyphenation{Ether-eum}
+\hyphenation{ether-eum}
+\hyphenation{break-throughs}
+
+\usepackage{authblk}
+\bibliography{Bibliography.bib}
+
+% TODO: Edit here
+\author{
+    \underline{Doctoral Student}: Ricardo Lopes Almeida\textsuperscript{1} \textsuperscript{2}
+    \par
+    \vspace{5mm}
+    \underline{Advisor Team}:
+    \small{  
+        \par
+        Fabrizio Baiardi\textsuperscript{1}, 
+        \par
+        Damiano Di Francesco Maesa\textsuperscript{1}
+        \par
+        Laura Ricci\textsuperscript{1}
+        \par
+        \vspace{10mm}
+        \textsuperscript{1} Dipartimento di Informatica, Università di Pisa, Italia
+        \par
+        \textsuperscript{2} Università di Camerino, Italia
+
+    }
+}
+
+\title{
+    \Large{Dottorato di Ricerca di Interesse Nazionale in Blockchain and distributed Ledger Technology - Social Systems and Smart Societies}
+    \vspace{5mm}
+    \par
+    \large{\textbf{Research Plan}}
+}
+
+\begin{document}
+% Switch off the page numbering just for the cover page
+\pagenumbering{gobble}
+
+\maketitle
+
+
+%% \linenumbers
+
+%% main text
+\newpage
+
+% Switch on the page numbering again
+\pagenumbering{arabic}
+
+\subfile{./Sections/01_ResearchPlan.tex}
+
+\printbibliography
+
+\listoftodos
+\end{document}

@@ -1,0 +1,91 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{ERC1155}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=b8a91f4b79257e293f63378b4030938e}{%
+           family={Foundation},
+           familyi={F\bibinitperiod},
+           given={Ethereum},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{b8a91f4b79257e293f63378b4030938e}
+      \strng{fullhash}{b8a91f4b79257e293f63378b4030938e}
+      \strng{fullhashraw}{b8a91f4b79257e293f63378b4030938e}
+      \strng{bibnamehash}{b8a91f4b79257e293f63378b4030938e}
+      \strng{authorbibnamehash}{b8a91f4b79257e293f63378b4030938e}
+      \strng{authornamehash}{b8a91f4b79257e293f63378b4030938e}
+      \strng{authorfullhash}{b8a91f4b79257e293f63378b4030938e}
+      \strng{authorfullhashraw}{b8a91f4b79257e293f63378b4030938e}
+      \field{extraname}{1}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{ERC-1155 Multi-Token Standard}
+      \field{urlday}{29}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://ethereum.org/en/developers/docs/standards/tokens/erc-1155/
+      \endverb
+      \verb{url}
+      \verb https://ethereum.org/en/developers/docs/standards/tokens/erc-1155/
+      \endverb
+    \endentry
+    \entry{ERC721}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=b8a91f4b79257e293f63378b4030938e}{%
+           family={Foundation},
+           familyi={F\bibinitperiod},
+           given={Ethereum},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{b8a91f4b79257e293f63378b4030938e}
+      \strng{fullhash}{b8a91f4b79257e293f63378b4030938e}
+      \strng{fullhashraw}{b8a91f4b79257e293f63378b4030938e}
+      \strng{bibnamehash}{b8a91f4b79257e293f63378b4030938e}
+      \strng{authorbibnamehash}{b8a91f4b79257e293f63378b4030938e}
+      \strng{authornamehash}{b8a91f4b79257e293f63378b4030938e}
+      \strng{authorfullhash}{b8a91f4b79257e293f63378b4030938e}
+      \strng{authorfullhashraw}{b8a91f4b79257e293f63378b4030938e}
+      \field{extraname}{2}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{ERC-721 Non-Fungible Token Standard}
+      \field{urlday}{29}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://ethereum.org/en/developers/docs/standards/tokens/erc-721/
+      \endverb
+      \verb{url}
+      \verb https://ethereum.org/en/developers/docs/standards/tokens/erc-721/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,0 +1,40 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../Images}}}
+
+\begin{document}
+\section{Research Plan}
+\label{sec:research_plan}
+%% RESEARCH PLAN
+\subsection{Introduction}
+The project presented in this document is the main research idea presented towards the completion of the Doctoral Program of the 38\textsuperscript{th} cycle of the Italian National Program in Doctoral Research - Blockchain and Distributed Ledger Technology in Social Systems and Smart Societies.
+\par
+I, Ricardo Almeida, graduated in Physics and Chemistry by the University of Evora, and with a Master's in Electronic Engineering and Telecommunications by the University of Aveiro, both universities in Portugal, from where I'm originally from, was awarded a 3 year scholarship towards the execution of a research plan centered on decentralised (blockchain based) electronic voting systems.
+
+\subsection{Doctoral Project Outline}
+The idea for this project was inspired by personal curiosity for blockchain technology, which was developed prior to the decision of engaging in the PhD program, and another parallel interest in general governance, but also motivated by the novelty of new technology and the potential for new solutions to existing problems through a novel decentralised approach. Initially this project had a more generalist approach due to the lack of support from blockchains to voting systems. A review of existing blockchain-based e-voting proposals in academia revealed an environment where researchers were trying to discover how to use blockchains developed with financial purposes in mind, namely cryptocurrency-centered blockchains, towards different applications. The introduction of smart contracts by the Ethereum blockchain opened significantly the spectrum of research possibilities, but the most significant breakthrough in this context came with the popularisation and standardisation of Non-Fungible Tokens (NFT).
+\par
+NFTs provide an interesting new approach to developing a blockchain-based voting systems. NFTs are inherently scarce, indivisible and individually unique. Also, the mechanics that regulate transferring them among users are transparent, since these are always smart contract functions that can be publicly verified, and secure. All NFT operations, from when they are minted until when they are burned, are recorded permanently in the blockchain, which makes NFTs highly traceable. These properties happen to be also highly desirable in a voting ballot. From this observation, the idea of including NFTs to abstract voting ballots in a blockchain-based voting system was quite obvious.
+\par
+Non-Fungible Tokens are a general idea. From the implementation point of view, the last years saw many public blockchains being introduced with explicit NFT support built in, normally through its support for some sort of smart contract programming paradigm that also supports NFT creation and mechanics. As such, it was evident that the specific technology used in the context of this project would be determinant to any conclusions obtained. In this sense, the doctoral project was expanded to also investigate how significantly different blockchain architectures behave when used to develop a NFT centered voting system and how these differences can influence the intrinsic characteristics of the system itself.
+\par
+Among the potential choices of blockchains, I'm focused in comparing the most popular of smart contract/NFT supporting blockchains - Ethereum, with Flow \cite{Flow2020a}, a blockchain that, incidently, was created specifically to address scalability and interoperability issues that arose from running the \textit{CryptoKitties} project in the Ethereum blockchain. The \textit{CryptoKitties} smart contract created one of the first interactive NFT projects in Ethereum, one whose sudden and unexpected popularity put the throughput limits of the Ethereum network to a test \cite{bbc2017}. The team behind this project tried to overcome the limitations of the Ethereum network, initially by adjusting the Solidity contract, but eventually they decided to create their own blockchain from scratch. Flow was created to the most efficient blockchain to trade NFTs in. Its main difference from Ethereum resides on how these chains store data, specifically, NFT related data. Ethereum uses a \textit{contract-based} storage approach, where all NFT fields are stored on chain with a reference to the minting contract, i.e, the NFT minting contract is the central storage element, while Flow developed a more decentralised, \textit{account-based} storage approach. In Flow, contracts and NFTs are two different data elements and both are saved relative to an \textit{account}, as in a normal blockchain account, akin to the Externally Owned Accounts from Ethereum, rather than a contract address as in Ethereum. Account storage spaces in Flow can only be modifies by the account owner and any external accesses to digital objects in storage must be explicitly given by t3he owner previously.
+\par
+Though both blockchain implement the same construct, they do so in fundamentally different ways. Due to, perhaps, the novelty of the whole context, there are no objective comparisons between these two approaches, neither from a generalist point of view, less even from a electronic voting system development perspective, which is definitely a motivator for this project.
+
+\subsection{Research Questions}
+With my doctoral project I intend to focus my research on the suitability of Non-Fungible Tokens, as the critical element used to abstract voting ballots in a decentralised e-voting system
+\begin{itemize}
+    \item {Can Non-Fungible Toke a secure, transparent and private voting system?}
+    \item {}
+    \item
+\end{itemize}
+% Cadence vs. Ethereum
+\subsection{State of the Art/Related Works}
+
+\subsection{Proposed Strategy}
+
+\subsection{Project Timeline}
+
+% WHO AM I?? Don't forget to mention the 6-month period as included in the PhD program itself.
+\subsection{Conclusion}
+\end{document}
