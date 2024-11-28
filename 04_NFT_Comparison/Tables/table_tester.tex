@@ -1,0 +1,29 @@
+% Please add the following required packages to your document preamble:
+\usepackage{booktabs}
+\usepackage{multirow}
+\begin{table}[]
+    \centering
+    \begin{tabular}{@{}|l|ll|@{}}
+        \toprule
+        \multicolumn{1}{|c|}{\multirow{2}{*}{Parameter}}           & \multicolumn{2}{l|}{Non-Fungible Architecture}                                                                                   \\ \cmidrule(l){2-3}
+        \multicolumn{1}{|c|}{}                                     & \multicolumn{1}{l|}{Ethereum}                                       & Flow                                                       \\ \midrule
+        Year                                                       & \multicolumn{1}{l|}{2013}                                           & 2020                                                       \\ \midrule
+        Native Cryptocurrency                                      & \multicolumn{1}{l|}{ETH}                                            & FLOW                                                       \\ \midrule
+        Virtual Machine                                            & \multicolumn{1}{l|}{EVM (Ethereum Virtual Machine)}                 & FVM (Flow Virtual Machine)                                 \\ \midrule
+        Smart Contract Programming Language                        & \multicolumn{1}{l|}{Solidity}                                       & Cadence                                                    \\ \midrule
+        \multicolumn{1}{|c|}{\multirow{2}{*}{Consensus Algorithm}} & \multicolumn{1}{l|}{Ethereum v1.0 (2013-2022): Proof-of-Work (PoW)} & \multicolumn{1}{c|}{\multirow{2}{*}{Proof-of-Stake (PoS)}} \\ \cmidrule(lr){2-2}
+        \multicolumn{1}{|c|}{}                                     & \multicolumn{1}{l|}{Ethereum v2.0 (2022-): Proof-of-Stake (PoS)}    & \multicolumn{1}{c|}{}                                      \\ \midrule
+        \multirow{4}{*}{Network Nodes Role Type}                   & \multicolumn{1}{l|}{\multirow{2}{*}{1 - Execution Client}}          & 1 - Collector Node                                         \\ \cmidrule(l){3-3}
+                                                                   & \multicolumn{1}{l|}{}                                               & 2 - Consensus Node                                         \\ \cmidrule(l){2-3}
+                                                                   & \multicolumn{1}{l|}{\multirow{2}{*}{2 - Consensus Client}}          & 3 - Execution Node                                         \\ \cmidrule(l){3-3}
+                                                                   & \multicolumn{1}{l|}{}                                               & 4 - Verification Node                                      \\ \midrule
+        \multirow{2}{*}{Token Standards}                           & \multicolumn{1}{l|}{ERC-20 (fungible token standard)}               & FungibleToken                                              \\ \cmidrule(l){2-3}
+                                                                   & \multicolumn{1}{l|}{ERC-721 (non-fungible token standard)}          & NonFungibleToken                                           \\ \midrule
+        Data Storage Architecture                                  & \multicolumn{1}{l|}{Contract-based}                                 & Account(User)-based                                        \\ \midrule
+        Block Rate (Average)                                       & \multicolumn{1}{l|}{12 - 15 seconds per block}                      & 0.5 - 1 seconds per block                                  \\ \midrule
+        Volume of daily transactions submitted (2024)              & \multicolumn{1}{l|}{1 - 1.25 million transactions per day}          & 0.5 - 1 million transactions per day                       \\ \midrule
+        Average gas price per transactions                         & \multicolumn{1}{l|}{5.5 gwei ($\sim$0.39 \$)}                       & $\sim$0.00000845 \$                                        \\ \bottomrule
+    \end{tabular}
+    \caption{}
+    \label{tab:my-table}
+\end{table}

@@ -1,0 +1,130 @@
+\documentclass[10pt]{article}
+
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{Images/}}
+\usepackage{subfiles}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{lmodern}
+\usepackage[
+    backend=biber,
+    bibencoding=latin1
+]{biblatex}
+\usepackage{todonotes}
+
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{tabularx}
+\usepackage{chngpage}
+\usepackage{hhline}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0, 0.6, 0}
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{mauve}{rgb}{0.5, 0, 0.82}
+
+\lstset{
+    frame=tb,
+    language=Java,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3
+}
+
+% TODO: Edit this one
+\hypersetup{
+    pdftitle={Proposal Article},
+    pdfauthor={Ricardo Almeida},
+    pdfsubject={Electronic Voting Framework based on Blockchain},
+    pdfkeywords={blockchain, electronic voting},
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=1,
+    colorlinks=true,
+    pdfstartview=Fit,
+    pdfpagemode=UseOutlines,
+    pdfpagelayout=SinglePage,
+    linkcolor=black
+}
+
+\hyphenation{block-chain}
+\hyphenation{Ether-eum}
+\hyphenation{ether-eum}
+\hyphenation{break-throughs}
+
+\usepackage{authblk}
+\bibliography{Bibliography.bib}
+
+% TODO: Edit here
+\author[1]{Ricardo Lopes Almeida}
+\author[2]{Fabrizio Baiardi}
+\author[3]{Damiano Di Francesco Maesa}
+\author[4]{Laura Ricci}
+
+\affil[1, 2, 3, 4]{Dipartimento di Informatica, Università di Pisa, Italia}
+\affil[1]{Università di Camerino, Italia}
+
+\title{My Article Template Proposal}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    %% Text of abstract
+\end{abstract}
+
+\section{Begin here!}
+
+%% \linenumbers
+
+%% main text
+\begin{table*}[htbp]
+    \footnotesize
+    \caption{Architectural comparison between Ethereum and Flow blockchains}
+    \centering
+    \begin{adjustwidth}{-1.5cm}{}
+        \begin{tabular}{@{} m{4cm} ll@{}}
+            \toprule
+            \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Parameter}}} & \multicolumn{2}{c}{\textbf{Non-Fungible Architecture}}                                                     \\ \cmidrule(l){2-3}
+            \multicolumn{1}{c}{}                                    & \multicolumn{1}{l}{\textbf{Ethereum}}                               & \textbf{Flow}                        \\ \midrule
+            \textbf{Year}                                           & \multicolumn{1}{l}{2013}                                            & 2020                                 \\ \midrule
+            \textbf{Native Cryptocurrency}                          & \multicolumn{1}{l}{ETH}                                             & FLOW                                 \\ \midrule
+            \textbf{Virtual Machine}                                & \multicolumn{1}{l}{EVM (Ethereum Virtual Machine)}                  & FVM (Flow Virtual Machine)           \\ \midrule
+            \parbox[m]{4cm}{\textbf{Smart Contract                                                                                                                               \\Programming Language}} & \multicolumn{1}{l}{Solidity}                                        & Cadence                              \\ \midrule
+            \textbf{Consensus Algorithm}                            & \multicolumn{1}{l}{2013-2022: Proof-of-Work, 2022-: Proof-of-Stake} & Proof-of-Stake                       \\ \midrule
+            \multirow{4}{*}{\textbf{Network Nodes Role Type}}       & \multicolumn{1}{l}{\multirow{2}{*}{1 - Execution Client}}           & 1 - Collector Node                   \\ \cmidrule(l){3-3}
+                                                                    & \multicolumn{1}{l}{}                                                & 2 - Consensus Node                   \\ \cmidrule(l){2-3}
+                                                                    & \multicolumn{1}{l}{\multirow{2}{*}{2 - Consensus Client}}           & 3 - Execution Node                   \\ \cmidrule(l){3-3}
+                                                                    & \multicolumn{1}{l}{}                                                & 4 - Verification Node                \\ \midrule
+            \multirow{2}{*}{\textbf{Token Standards}}               & \multicolumn{1}{l}{ERC-20 (fungible token standard)}                & FungibleToken                        \\ \cmidrule(l){2-3}
+                                                                    & \multicolumn{1}{l}{ERC-721 (non-fungible token standard)}           & NonFungibleToken                     \\ \midrule
+            \textbf{Data Storage Architecture}                      & \multicolumn{1}{l}{Contract-based}                                  & Account(User)-based                  \\ \midrule
+            \textbf{Block Rate (Average)}                           & \multicolumn{1}{l}{12 - 15 seconds per block}                       & 0.5 - 1 seconds per block            \\ \midrule
+            \textbf{Volume of daily transactions submitted (2024)}  & \multicolumn{1}{l}{1 - 1.25 million transactions per day}           & 0.5 - 1 million transactions per day \\ \midrule
+            \textbf{Average gas price per transactions}             & \multicolumn{1}{l}{5.5 gwei ($\sim$0.39 \$)}                        & $\sim$0.00000845 \$                  \\ \bottomrule
+        \end{tabular}
+    \end{adjustwidth}
+    \label{tab:my-table}
+\end{table*}
+
+\end{document}

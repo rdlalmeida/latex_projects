@@ -8,15 +8,38 @@
 \subsection{Technology Comparison}
 The implementation exercise depicted in Sec. \ref{sec:solidity_ethereum_nft_implementation} and Sec. \ref{sec:cadence_flow_nft_implementation} provided sufficient data to do a side-by-side comparison between the two blockchains technologies considered.
 \par
-Table \ref{fig:comparison_table} summarises the technological characteristics that set these blockchain technologies apart.
+Table \ref{tab:ethereum_flow_comparison_table} summarises the technological characteristics that set these blockchain technologies apart.
 
-% // TODO: Replace this figure with a proper Latex table 
-\begin{figure}[htp]
+
+% Please add the following required packages to your document preamble:
+\begin{table*}[h]
+    \footnotesize
+    \caption{Architectural comparison between Ethereum and Flow blockchains}
     \centering
-    \includegraphics[width=1.0\textwidth]{../Images/10_Technology_Comparison.png}
-    \caption{Technical comparison between the Ethereum and Flow blockchains}
-    \label{fig:comparison_table}
-\end{figure}
+    \begin{adjustwidth}{-1.5cm}{}
+        \begin{tabular}{@{} m{4cm} ll@{}}
+            \toprule
+            \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Parameter}}} & \multicolumn{2}{c}{\textbf{Non-Fungible Architecture}}                                                     \\ \cmidrule(l){2-3}
+            \multicolumn{1}{c}{}                                    & \multicolumn{1}{l}{\textbf{Ethereum}}                               & \textbf{Flow}                        \\ \midrule
+            \textbf{Year}                                           & \multicolumn{1}{l}{2013}                                            & 2020                                 \\ \midrule
+            \textbf{Native Cryptocurrency}                          & \multicolumn{1}{l}{ETH}                                             & FLOW                                 \\ \midrule
+            \textbf{Virtual Machine}                                & \multicolumn{1}{l}{EVM (Ethereum Virtual Machine)}                  & FVM (Flow Virtual Machine)           \\ \midrule
+            \parbox[m]{4cm}{\textbf{Smart Contract                                                                                                                               \\Programming Language}} & \multicolumn{1}{l}{Solidity}                                        & Cadence                              \\ \midrule
+            \textbf{Consensus Algorithm}                            & \multicolumn{1}{l}{2013-2022: Proof-of-Work, 2022-: Proof-of-Stake} & Proof-of-Stake                       \\ \midrule
+            \multirow{4}{*}{\textbf{Network Nodes Role Type}}       & \multicolumn{1}{l}{\multirow{2}{*}{1 - Execution Client}}           & 1 - Collector Node                   \\ \cmidrule(l){3-3}
+                                                                    & \multicolumn{1}{l}{}                                                & 2 - Consensus Node                   \\ \cmidrule(l){2-3}
+                                                                    & \multicolumn{1}{l}{\multirow{2}{*}{2 - Consensus Client}}           & 3 - Execution Node                   \\ \cmidrule(l){3-3}
+                                                                    & \multicolumn{1}{l}{}                                                & 4 - Verification Node                \\ \midrule
+            \multirow{2}{*}{\textbf{Token Standards}}               & \multicolumn{1}{l}{ERC-20 (fungible token standard)}                & FungibleToken                        \\ \cmidrule(l){2-3}
+                                                                    & \multicolumn{1}{l}{ERC-721 (non-fungible token standard)}           & NonFungibleToken                     \\ \midrule
+            \textbf{Data Storage Architecture}                      & \multicolumn{1}{l}{Contract-based}                                  & Account(User)-based                  \\ \midrule
+            \textbf{Block Rate (Average)}                           & \multicolumn{1}{l}{12 - 15 seconds per block}                       & 0.5 - 1 seconds per block            \\ \midrule
+            \textbf{Volume of daily transactions submitted (2024)}  & \multicolumn{1}{l}{1 - 1.25 million transactions per day}           & 0.5 - 1 million transactions per day \\ \midrule
+            \textbf{Average gas price per transactions}             & \multicolumn{1}{l}{5.5 gwei ($\sim$0.39 \$)}                        & $\sim$0.00000845 \$                  \\ \bottomrule
+        \end{tabular}
+    \end{adjustwidth}
+    \label{tab:ethereum_flow_comparison_table}
+\end{table*}
 
 
 \subsubsection{Analysis}
@@ -28,7 +51,7 @@ Another architectural feature that distinguish these technologies is the storage
 \par
 Comparing both blockchains regarding their daily transaction average or the average gas price is merely illustrative because these values include a significant factor of popularity that does not translate directly into objective characteristics passible to be compared. Ethereum has a much slower block rate and very expensive gas prices when compared to Flow, but it still displays a daily transaction average that is the same as Flow in its lower end, but can be as much as 2.5 times larger. This is mainly due to popularity, which also drives price speculations, which justifies the large difference between average gas prices (An Ethereum transaction costs, in average, more expensive by a factor of 46154) as well as the increased daily transaction averages. Ethereum is 7 years ahead of Flow and it as also being used as the default blockchain for smart contract based projects, since it was the first public blockchain to offer explicit support for it. The elements that drive this price difference fall outside the bounds of this study, but it is important to node the massive difference that these may cause in blockchain usability.
 \par
-Both blockchains define strict standards to regulate token mechanics in their chains, both of the fungible and non-fungible type. This creates a normalised application space where projects created by different development teams can interact with each other without any pre-arrange conventions, as long as both have the care to implement their tokens through the official standards. In both cases, these standards are abstracted into contract interfaces, that at their core are files that explicit mandatory structures and functions for any token implemented. The standards indicated in Table \ref{fig:comparison_table} were discussed previously in greater detail in Sec. \ref{sec:token_standards}.
+Both blockchains define strict standards to regulate token mechanics in their chains, both of the fungible and non-fungible type. This creates a normalised application space where projects created by different development teams can interact with each other without any pre-arrange conventions, as long as both have the care to implement their tokens through the official standards. In both cases, these standards are abstracted into contract interfaces, that at their core are files that explicit mandatory structures and functions for any token implemented. The standards indicated in Table \ref{tab:ethereum_flow_comparison_table} were discussed previously in greater detail in Sec. \ref{sec:token_standards}.
 
 
 \subsection{Cost Analysis}
@@ -81,6 +104,7 @@ Unfortunately, Flow command line interface does not provides a gas reporter or s
 Alternatively, it is relatively easy to query the Flow blockchain to obtain FLOW balances and even the current storage level, which relates to the total costs by the storage scheme used by Flow that was described in Sec. \ref{sec:storage_in_flow}, for each account involved. As such, the cost exercise was repeated for the Flow blockchain. Table \ref{fig:cadence_gas_cost} presents a study on how the main balance and internal storage levels fluctuate during the lifecycle of a NFT in Flow
 
 % // TODO: Replace this table by a latex one
+% // TODO: Split this table into gas and space analysis, add the rest of the accounts and redo the analysis
 \begin{figure}[htp]
     \centering
     \includegraphics[width=1.0\textwidth]{../Images/09_FlowFeeCalculations.png}
