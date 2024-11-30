@@ -1,29 +1,81 @@
-% Please add the following required packages to your document preamble:
-\usepackage{booktabs}
+\documentclass[10pt]{article}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\graphicspath{{Images/}}
+\usepackage{textcomp}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{lmodern}
+
+\setlength{\marginparwidth}{2cm}
+% \usepackage[disable]{todonotes}
+\usepackage{geometry}
+\usepackage{amsthm}
+\usepackage{subfiles}
+
+\usepackage{siunitx}
 \usepackage{multirow}
-\begin{table}[]
+\usepackage{lscape}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[super]{nth}
+
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{xurl}
+
+\usepackage{authblk}
+
+\usepackage{hhline}
+
+\usepackage[labelsep=period]{caption}
+% \captionsetup[table]{name=TABLE}
+\renewcommand{\thetable}{\Roman{table}}
+
+\setlength\extrarowheight{2pt}
+
+\begin{document}
+
+\begin{table}[ht]
     \centering
-    \begin{tabular}{@{}|l|ll|@{}}
-        \toprule
-        \multicolumn{1}{|c|}{\multirow{2}{*}{Parameter}}           & \multicolumn{2}{l|}{Non-Fungible Architecture}                                                                                   \\ \cmidrule(l){2-3}
-        \multicolumn{1}{|c|}{}                                     & \multicolumn{1}{l|}{Ethereum}                                       & Flow                                                       \\ \midrule
-        Year                                                       & \multicolumn{1}{l|}{2013}                                           & 2020                                                       \\ \midrule
-        Native Cryptocurrency                                      & \multicolumn{1}{l|}{ETH}                                            & FLOW                                                       \\ \midrule
-        Virtual Machine                                            & \multicolumn{1}{l|}{EVM (Ethereum Virtual Machine)}                 & FVM (Flow Virtual Machine)                                 \\ \midrule
-        Smart Contract Programming Language                        & \multicolumn{1}{l|}{Solidity}                                       & Cadence                                                    \\ \midrule
-        \multicolumn{1}{|c|}{\multirow{2}{*}{Consensus Algorithm}} & \multicolumn{1}{l|}{Ethereum v1.0 (2013-2022): Proof-of-Work (PoW)} & \multicolumn{1}{c|}{\multirow{2}{*}{Proof-of-Stake (PoS)}} \\ \cmidrule(lr){2-2}
-        \multicolumn{1}{|c|}{}                                     & \multicolumn{1}{l|}{Ethereum v2.0 (2022-): Proof-of-Stake (PoS)}    & \multicolumn{1}{c|}{}                                      \\ \midrule
-        \multirow{4}{*}{Network Nodes Role Type}                   & \multicolumn{1}{l|}{\multirow{2}{*}{1 - Execution Client}}          & 1 - Collector Node                                         \\ \cmidrule(l){3-3}
-                                                                   & \multicolumn{1}{l|}{}                                               & 2 - Consensus Node                                         \\ \cmidrule(l){2-3}
-                                                                   & \multicolumn{1}{l|}{\multirow{2}{*}{2 - Consensus Client}}          & 3 - Execution Node                                         \\ \cmidrule(l){3-3}
-                                                                   & \multicolumn{1}{l|}{}                                               & 4 - Verification Node                                      \\ \midrule
-        \multirow{2}{*}{Token Standards}                           & \multicolumn{1}{l|}{ERC-20 (fungible token standard)}               & FungibleToken                                              \\ \cmidrule(l){2-3}
-                                                                   & \multicolumn{1}{l|}{ERC-721 (non-fungible token standard)}          & NonFungibleToken                                           \\ \midrule
-        Data Storage Architecture                                  & \multicolumn{1}{l|}{Contract-based}                                 & Account(User)-based                                        \\ \midrule
-        Block Rate (Average)                                       & \multicolumn{1}{l|}{12 - 15 seconds per block}                      & 0.5 - 1 seconds per block                                  \\ \midrule
-        Volume of daily transactions submitted (2024)              & \multicolumn{1}{l|}{1 - 1.25 million transactions per day}          & 0.5 - 1 million transactions per day                       \\ \midrule
-        Average gas price per transactions                         & \multicolumn{1}{l|}{5.5 gwei ($\sim$0.39 \$)}                       & $\sim$0.00000845 \$                                        \\ \bottomrule
-    \end{tabular}
-    \caption{}
-    \label{tab:my-table}
+    \caption{Storage used by the Flow accounts in the exercise}
+    \label{tab:FLOW_storage}
+    \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{lllllll}
+            \hline
+            \multicolumn{7}{|c|}{\textbf{Storage used by Flow accounts (Bytes)}}                                                                                                                                                                                                                                                                   \\ \hline
+            \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Tx}}} & \multicolumn{2}{c|}{\textbf{Emulator-account}}                                     & \multicolumn{2}{c|}{\textbf{account01}} & \multicolumn{2}{c|}{\textbf{account02}}                                                                                                            \\ \cline{2-7}
+            \multicolumn{1}{|c|}{}                             & \multicolumn{1}{l|}{Storage (Bytes)}                                               & \multicolumn{1}{l|}{Difference}         & \multicolumn{1}{l|}{Storage (Bytes)}    & \multicolumn{1}{l|}{Difference} & \multicolumn{1}{l|}{Storage (Bytes)} & \multicolumn{1}{l|}{Difference} \\ \hline \hline
+            \multicolumn{1}{|l|}{\textbf{00}}                  & \multicolumn{1}{l|}{428655}                                                        & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{0}                  & \multicolumn{1}{l|}{}           & \multicolumn{1}{l|}{0}               & \multicolumn{1}{l|}{}           \\ \hline
+            \multicolumn{1}{|l|}{\textbf{01}}                  & \multicolumn{1}{l|}{429290}                                                        & \multicolumn{1}{l|}{635}                & \multicolumn{1}{l|}{1007}               & \multicolumn{1}{l|}{1007}       & \multicolumn{1}{l|}{1007}            & \multicolumn{1}{l|}{1007}       \\ \hline
+            \multicolumn{1}{|l|}{\textbf{02}}                  & \multicolumn{1}{l|}{429607}                                                        & \multicolumn{1}{l|}{317}                & \multicolumn{1}{l|}{1007}               & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{1007}            & \multicolumn{1}{l|}{0}          \\ \hline
+            \multicolumn{1}{|l|}{\textbf{03}}                  & \multicolumn{1}{l|}{436337}                                                        & \multicolumn{1}{l|}{6730}               & \multicolumn{1}{l|}{1007}               & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{1007}            & \multicolumn{1}{l|}{0}          \\ \hline
+            \multicolumn{1}{|l|}{\textbf{04}}                  & \multicolumn{1}{l|}{436613}                                                        & \multicolumn{1}{l|}{276}                & \multicolumn{1}{l|}{1588}               & \multicolumn{1}{l|}{581}        & \multicolumn{1}{l|}{1588}            & \multicolumn{1}{l|}{581}        \\ \hline
+            \multicolumn{1}{|l|}{\textbf{05}}                  & \multicolumn{1}{l|}{436769}                                                        & \multicolumn{1}{l|}{156}                & \multicolumn{1}{l|}{1751}               & \multicolumn{1}{l|}{163}        & \multicolumn{1}{l|}{1588}            & \multicolumn{1}{l|}{0}          \\ \hline
+            \multicolumn{1}{|l|}{\textbf{06}}                  & \multicolumn{1}{l|}{436894}                                                        & \multicolumn{1}{l|}{125}                & \multicolumn{1}{l|}{1588}               & \multicolumn{1}{l|}{-163}       & \multicolumn{1}{l|}{1751}            & \multicolumn{1}{l|}{163}        \\ \hline
+            \multicolumn{1}{|l|}{\textbf{07}}                  & \multicolumn{1}{l|}{437035}                                                        & \multicolumn{1}{l|}{141}                & \multicolumn{1}{l|}{1588}               & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{1588}            & \multicolumn{1}{l|}{-163}       \\ \hline
+                                                               &                                                                                    &                                         &                                         &                                 &                                      &                                 \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{\textbf{Transactions}}                                                                                                                                                                                                                                        \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{00 – New service-account created}                                                                                                                                                                                                                             \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{01 – Emulator test accounts created (5)}                                                                                                                                                                                                                      \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{02 – Emulator test accounts funded with 1.0 FLOW}                                                                                                                                                                                                             \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{03 – Deploy ExampleNFTContract into emulator}                                                                                                                                                                                                                 \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{04 – Create a NonFungibleToken.Collection in each account}                                                                                                                                                                                                    \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{05 – Mint an ExampleNFTContract.NFT into account01 Collection}                                                                                                                                                                                                \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{06 – Transfer ExampleNFT from account01 to account02}                                                                                                                                                                                                         \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{07 – Burn the ExampleNFTs from account02}                                                                                                                                                                                                                     \\ \cline{2-7}
+        \end{tabular}%
+    }
 \end{table}
+
+\end{document}
+\endinput
+%%
+%% End of file `elsarticle-template-num.tex'.
