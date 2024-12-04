@@ -10,32 +10,30 @@ The implementation exercise depicted in Sec. \ref{sec:solidity_ethereum_nft_impl
 \par
 Table \ref{tab:ethereum_flow_comparison_table} summarises the technological characteristics that set these blockchain technologies apart.
 
-
-% Please add the following required packages to your document preamble:
-\begin{table*}[h]
+\begin{table*}[ht]
     \footnotesize
     \caption{Architectural comparison between Ethereum and Flow blockchains}
     \centering
-    \begin{adjustwidth}{-1.5cm}{}
-        \begin{tabular}{@{} m{4cm} ll@{}}
+    \begin{adjustwidth}{0cm}{}
+        \begin{tabular}{@{} m{3.8cm} ll@{}}
             \toprule
-            \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Parameter}}} & \multicolumn{2}{c}{\textbf{Non-Fungible Architecture}}                                                     \\ \cmidrule(l){2-3}
-            \multicolumn{1}{c}{}                                    & \multicolumn{1}{l}{\textbf{Ethereum}}                               & \textbf{Flow}                        \\ \midrule
-            \textbf{Year}                                           & \multicolumn{1}{l}{2013}                                            & 2020                                 \\ \midrule
-            \textbf{Native Cryptocurrency}                          & \multicolumn{1}{l}{ETH}                                             & FLOW                                 \\ \midrule
-            \textbf{Virtual Machine}                                & \multicolumn{1}{l}{EVM (Ethereum Virtual Machine)}                  & FVM (Flow Virtual Machine)           \\ \midrule
-            \parbox[m]{4cm}{\textbf{Smart Contract                                                                                                                               \\Programming Language}} & \multicolumn{1}{l}{Solidity}                                        & Cadence                              \\ \midrule
-            \textbf{Consensus Algorithm}                            & \multicolumn{1}{l}{2013-2022: Proof-of-Work, 2022-: Proof-of-Stake} & Proof-of-Stake                       \\ \midrule
-            \multirow{4}{*}{\textbf{Network Nodes Role Type}}       & \multicolumn{1}{l}{\multirow{2}{*}{1 - Execution Client}}           & 1 - Collector Node                   \\ \cmidrule(l){3-3}
-                                                                    & \multicolumn{1}{l}{}                                                & 2 - Consensus Node                   \\ \cmidrule(l){2-3}
-                                                                    & \multicolumn{1}{l}{\multirow{2}{*}{2 - Consensus Client}}           & 3 - Execution Node                   \\ \cmidrule(l){3-3}
-                                                                    & \multicolumn{1}{l}{}                                                & 4 - Verification Node                \\ \midrule
-            \multirow{2}{*}{\textbf{Token Standards}}               & \multicolumn{1}{l}{ERC-20 (fungible token standard)}                & FungibleToken                        \\ \cmidrule(l){2-3}
-                                                                    & \multicolumn{1}{l}{ERC-721 (non-fungible token standard)}           & NonFungibleToken                     \\ \midrule
-            \textbf{Data Storage Architecture}                      & \multicolumn{1}{l}{Contract-based}                                  & Account(User)-based                  \\ \midrule
-            \textbf{Block Rate (Average)}                           & \multicolumn{1}{l}{12 - 15 seconds per block}                       & 0.5 - 1 seconds per block            \\ \midrule
-            \textbf{Volume of daily transactions submitted (2024)}  & \multicolumn{1}{l}{1 - 1.25 million transactions per day}           & 0.5 - 1 million transactions per day \\ \midrule
-            \textbf{Average cost (gas) per transactions}            & \multicolumn{1}{l}{5.5 gwei ($\sim$0.39 \$)}                        & $\sim$0.00000845 \$                  \\ \bottomrule
+            \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Parameter}}} & \multicolumn{2}{c}{\textbf{Non-Fungible Architecture}}                                     \\ \cmidrule(l){2-3}
+            \multicolumn{1}{c}{}                                    & \multicolumn{1}{l}{\textbf{Ethereum}}                          & \textbf{Flow}             \\ \midrule
+            \textbf{Year}                                           & \multicolumn{1}{l}{2013}                                       & 2020                      \\ \midrule
+            \textbf{Native Cryptocurrency}                          & \multicolumn{1}{l}{ETH}                                        & FLOW                      \\ \midrule
+            \textbf{Virtual Machine}                                & \multicolumn{1}{l}{\parbox[m]{3.8cm}{EVM (Ethereum                                         \\Virtual Machine)}}             & \parbox[m]{3.8cm}{FVM (Flow\\Virtual Machine)} \\ \midrule
+            \parbox[m]{3.8cm}{\textbf{Smart Contract                                                                                                             \\Programming Language}} & \multicolumn{1}{l}{Solidity}                                        & Cadence                              \\ \midrule
+            \textbf{Consensus Algorithm}                            & \multicolumn{1}{l}{\parbox[m]{3.8cm}{2013-2022: Proof-of-Work,                             \\2022-: Proof-of-Stake}} & Proof-of-Stake                       \\ \midrule
+            \multirow{4}{*}{\parbox[m]{3.8cm}{\textbf{Network Nodes                                                                                              \\Roles Types}}} & \multicolumn{1}{l}{\multirow{2}{*}{1 - Execution Client}}          & 1 - Collector Node                   \\ \cmidrule(l){3-3}
+                                                                    & \multicolumn{1}{l}{}                                           & 2 - Consensus Node        \\ \cmidrule(l){2-3}
+                                                                    & \multicolumn{1}{l}{\multirow{2}{*}{2 - Consensus Client}}      & 3 - Execution Node        \\ \cmidrule(l){3-3}
+                                                                    & \multicolumn{1}{l}{}                                           & 4 - Verification Node     \\ \midrule
+            \multirow{2}{*}{\textbf{Token Standards}}               & \multicolumn{1}{l}{\parbox[m]{3.8cm}{ERC-20 (fungible                                      \\token standard)}}           & FungibleToken              \\ \cmidrule(l){2-3}
+                                                                    & \multicolumn{1}{l}{\parbox[m]{3.8cm}{ERC-721 (non-fungible                                 \\token standard)}}      & NonFungibleToken           \\ \midrule
+            \parbox[m]{3.8cm}{\textbf{Data Storage                                                                                                               \\Architecture}}   & \multicolumn{1}{l}{Contract-based}                                 & Account(User)-based                  \\ \midrule
+            \textbf{Block Rate (Average)}                           & \multicolumn{1}{l}{12 - 15 seconds per block}                  & 0.5 - 1 seconds per block \\ \midrule
+            \textbf{Volume of daily transactions submitted (2024)}  & \multicolumn{1}{l}{\parbox[m]{3.8cm}{1 - 1.25 million                                      \\transactions per day}}      & \parbox[m]{3.8cm}{0.5 - 1 million\\transactions per day} \\ \midrule
+            \parbox[m]{3.8cm}{\textbf{Average cost (gas)                                                                                                         \\per transactions}} & \multicolumn{1}{l}{5.5 gwei ($\sim$0.39 \$)}                       & $\sim$0.00000845 \$                  \\ \bottomrule
         \end{tabular}
     \end{adjustwidth}
     \label{tab:ethereum_flow_comparison_table}
@@ -186,3 +184,9 @@ Alternatively, it is relatively easy to query the Flow blockchain to obtain FLOW
 The main conclusion from analysing Table \ref{tab:FLOW_balance} is that the majority of transactions are priced to the minimum value of 0.000001 FLOW. This particular exercise included a service or emulator account and five additional user accounts. One interesting aspect to note is that the emulator account has costs with all operations, even when the account is not included in the transaction. This is because NFT operations, such as transfers, are run from the implementing contract. Since it was the emulator account that deployed the main contract, anytime someone invokes an NFT function, the contract executions are paid by the deployer. Individual users, emulated as additional account, also incur in costs when they sign the transactions, as expected. But overall, it appears that in this simple example, the total transactions costs never exceeded the minimum value, and as such, the majority of the transactions were charged as that. In cases where it seems that a higher fee was paid, such as the 0.000005 FLOW paid by the emulator account during the final burn operation, this is actually 5 minimum transaction fees, one per each time the burn function was executed in the main contract. Given how much more cheap FLOW is compared to ETH, and how, apparently, for simple NFT interactions only the minimum fee gets charges, Flow appears to be a much more attractive economically then Ethereum.
 
 \end{document}
+
+% // TODO: Refer the fact that accounts in Ethereum do not cost money because they don't have a minimum balance requirement, unlike flow. Hence why Ethereum emulators come with like 20 pre configured accounts while Flow's emulator only has the service account defined as default. All the other accounts need to be paid by someone (the emulator-account in 99% of the cases)
+% // TODO: Mention the balance between how Ethereum uses less memory to save a NFT than Flow.
+% // TODO: Elaborate between the contract-based vs. account-based storage related to the weaknesses and strengths of each approach
+% // TODO: Provide a side by side comparison between Solidity and Cadence
+% // TODO: Include a SWOT analysis of all of this
