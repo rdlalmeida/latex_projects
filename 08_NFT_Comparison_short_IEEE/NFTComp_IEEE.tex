@@ -1,0 +1,99 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+%Template version as of 6/27/2024
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\graphicspath{{Image/}}
+\usepackage{textcomp}
+\usepackage{subfiles}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{lmodern}
+
+\usepackage{siunitx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[super]{nth}
+
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{xurl}
+\usepackage{changepage}
+\usepackage{soul}
+
+\usepackage[english]{babel}
+\usepackage{combelow}
+
+
+
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Analysis of a Non-Fungible Token centric Blockchain Architecture and Comparison with a General Purpose Blockchain
+    \thanks{TODO: ADD THE CAMERINO INFO HERE}
+}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Ricardo Lopes Almeida}
+    \IEEEauthorblockA{\textit{Università di Camerino} \\
+        \textit{Università di Pisa}\\
+        Camerino and Pisa, Italia \\
+        ricardo.almeida@unicam.it}
+    \and
+    \IEEEauthorblockN{2\textsuperscript{nd} Fabrizio Baiardi}
+    \IEEEauthorblockA{\textit{Dipartimento di Informatica} \\
+        \textit{Università di Pisa}\\
+        Pisa, Italia \\
+        fabrizio.baiardi@unipi.it}
+    \and
+    \IEEEauthorblockN{3\textsuperscript{rd} Damiano Di Francesco Maesa}
+    \IEEEauthorblockA{\textit{Dipartimento di Informatica} \\
+        \textit{Università di Pisa}\\
+        Pisa, Italia \\
+        damiano.difrancesco@unipi.it}
+    \and
+    \IEEEauthorblockN{4\textsuperscript{th} Laura Ricci}
+    \IEEEauthorblockA{\textit{Dipartimento di Informatica} \\
+        \textit{Università di Pisa}\\
+        Pisa, Italia \\
+        laura.ricci@unipi.it}
+}
+
+\maketitle
+
+\begin{abstract}
+    Blockchain is the revolutionary technology that enabled the first true digital currency, i.e., cryptocurrency, a concept that has forced changes in the world. Cryptocurrencies are no longer amateur experiments and became valid investments that compose an increasingly larger share of investment portfolios. Cryptocurrencies are based in \textit{Fungible Token (FT)}, a type of blockchain tokens. But these tokens can be programmed differently and transformed into \textit{Non Fungible Tokens (NFTs)} instead. NFTs are among the most recent and promising additions to the blockchain universe. While FTs are used to implement digital currencies, where these tokens emulate coins and bank notes used in normal, fiat currencies, NFTs are used to establish ownership of objects, digital or otherwise. Non-fungible counterparts can be used to store data directly in the blockchain. This is how they establish the ownership relations and how the digital or physical object whose ownership is established by the token are identified. This operational aspect provide NFTs with a larger landscape of possible implementation architectures than the fungible version. This paper focuses on an alternative NFT architecture introduced by Flow, the first blockchain created with NFT support as its central tenet, and it works and how it compares to Ethereum, one of the most popular and NFT supporting public blockchains.
+\end{abstract}
+
+\begin{IEEEkeywords}
+    Blockchain, Non-Fungible Tokens, Ethereum, Flow, Solidity, Cadence
+\end{IEEEkeywords}
+
+% SUBFILES
+\subfile{./Sections/01_Introduction.tex}
+
+\subfile{./Sections/02_RelatedWorks.tex}
+
+\subfile{./Sections/03_FlowBlockchain.tex}
+
+\subfile{./Sections/04_ArchitectureComparison.tex}
+
+\subfile{./Sections/05_Conclusion.tex}
+
+% SUBFILES
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,Bibliography.bib}
+\end{document}
