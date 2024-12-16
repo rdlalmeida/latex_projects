@@ -1,0 +1,124 @@
+\documentclass[../NFTComp_IEEE.tex]{subfiles}
+\graphicspath{{\subfix{../Images}}}
+
+\begin{document}
+\section{Results and Comparison}
+\label{sec:architecture_comparison}
+
+\subsection{Blockchain Comparison}
+The Flow blockchain is significantly different from general purpose blockchains available publicly. To reinforce this conclusion, we took Ethereum, the most popular blockchain used in the academic context, as the reference point to produce Table \ref{tab:ethereum_flow_comparison_table} where the two solutions were compared side by side regarding the most relevant characteristics towards NFT implementations.
+
+\begin{table}[ht]
+    \scriptsize
+    \caption{Ethereum-Flow Technology comparison}
+    \centering
+    \begin{adjustwidth}{0cm}{}
+        \begin{tabular}{@{} m{2.5cm} ll@{}}
+            \toprule
+            \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Parameter}}}      & \multicolumn{2}{c}{\textbf{Non-Fungible Token Architecture}}                                                       \\ \cmidrule(l){2-3}
+            \multicolumn{1}{c}{}                                         & \multicolumn{1}{l}{\textbf{Ethereum}}                               & \textbf{Flow}                                \\ \midrule
+            \textbf{Year}                                                & \multicolumn{1}{l}{2013}                                            & 2020                                         \\ \midrule
+            \textbf{Cryptocurrency}                                      & \multicolumn{1}{l}{ETH}                                             & FLOW                                         \\ \midrule
+            \parbox[m]{2.5cm}{\textbf{Programming Language}}             & \multicolumn{1}{l}{Solidity}                                        & Cadence                                      \\ \midrule
+            \parbox[m]{2.5cm}{\textbf{Consensus                                                                                                                                               \\Algorithm}}                                 & \multicolumn{1}{l}{\parbox[m]{2.2cm}{2013-2022: PoW,                                            \\2022-: PoS}} & Proof-of-Stake (PoS)                       \\ \midrule
+            \multirow{4}{*}{\parbox[m]{2.5cm}{\textbf{Network Nodes                                                                                                                           \\Roles Types}}} & \multicolumn{1}{l}{\multirow{2}{*}{1 - Execution Client}}          & 1 - Collector Node                   \\ \cmidrule(l){3-3}
+                                                                         & \multicolumn{1}{l}{}                                                & 2 - Consensus Node                           \\ \cmidrule(l){2-3}
+                                                                         & \multicolumn{1}{l}{\multirow{2}{*}{2 - Consensus Client}}           & 3 - Execution Node                           \\ \cmidrule(l){3-3}
+                                                                         & \multicolumn{1}{l}{}                                                & 4 - Verification Node                        \\ \midrule
+            \multirow{2}{*}{\parbox[m]{2.5cm}{\textbf{Token Standards}}} & \multicolumn{1}{l}{\parbox[m]{2.4cm}{ERC-20 (fungible token)}}      & FungibleToken                                \\ \cmidrule(l){2-3}
+                                                                         & \multicolumn{1}{l}{\parbox[m]{2.4cm}{ERC-721 (non-fungible token)}} & NonFungibleToken                             \\ \midrule
+            \parbox[m]{2.5cm}{\textbf{Data Storage                                                                                                                                            \\Architecture}}   & \multicolumn{1}{l}{Contract-based}                                 & Account(User)-based                  \\ \midrule
+            \textbf{Block Rate (Average)}                                & \multicolumn{1}{l}{\parbox[m]{2.0cm}{12 - 15 seconds per block}}    & \parbox[m]{2.0cm}{0.5 - 1 seconds per block} \\ \midrule
+            \parbox[m]{2.5cm}{\textbf{Daily transaction volume (2024)}}  & \multicolumn{1}{l}{\parbox[m]{2.0cm}{1 - 1.25 million                                                              \\transactions\textbackslash day}}      & \parbox[m]{2.0cm}{0.5 - 1 million\\transactions\textbackslash day} \\ \midrule
+            \parbox[m]{2.5cm}{\textbf{Cost per transaction (average)}}   & \multicolumn{1}{l}{5.5 gwei ($\sim$0.39 \$)}                        & $\sim$0.00000845 \$                          \\ \bottomrule
+        \end{tabular}
+    \end{adjustwidth}
+    \label{tab:ethereum_flow_comparison_table}
+\end{table}
+
+The two technologies are similar in their general blockchain approach: both implement a cryptocurrency token and use it as a regulatory mechanism to optimise the functioning of their respective virtual machines. Both implement the concept of gas, a fraction of the cryptocurrency implemented, that needs to be paid beforehand to execute transactions that change the state of the blockchain. Ethereum coined the term \textit{gas} to refer to cryptocurrency used to pay virtual machine computational costs. Flow implements the same exact logic, though they do not use the \textit{gas} term as much. Both blockchains use PoS as the consensus protocol, tough this is a recent upgrade for Ethereum. This chain spent the first 9 years using PoW, like Bitcoin, but it went through the Paris fork in September 2022, which implemented the \textit{Ethereum Improvement Proposal 3675 (EIP-3675)} \cite{EIP3675} that switched the consensus protocol to PoS from there on.
+\par
+The similarities stop here. From here, Flow and Ethereum provide very different programming languages for smart contract development. Both languages produce code that can be executed in the respective distributed virtual machines but using different syntaxes, albeit producing elements with similar behaviours and functionalities. Flow claims that its higher throughput, low operational costs and higher scalability are due to their four node pipelining architecture. Essentially Flow splits the two-node architecture from Ethereum into half, doubles the roles in the blockchain but this translates into a more efficient, but also more complex, blockchain. Both blockchains provide official standards to regulate token based development and mechanics, but the obvious incompatibility between the technologies produced a pair of token standards for each chain, among others.
+\par
+Flow is the cheapest and fastest of both. Flow's block rate is between 12 and 30 times higher than Ethereums and Ethereum transactions are, exactly 46154 times more expensive than Flow's. Yet, Ethereum's popularity and maturity still trump over Flow's operational advantages. At the time of this writing, Ethereum daily volume of transactions can be as 2.5 times higher than in Flow while being objectively worse to operate. This is not an endorsement of Ethereum, or Flow for that matter, but a factual statement: popularity and application ecosystem maturity influence technology adoption more that efficiency and cost, at least in a short term basis. It is important to notice that Ethereum has been available for twice as much time as Flow, and Flow made its debut in a time where many other blockchains were being created as well. Flow has yet to distinguish itself from other, more established NFT supporting blockchains. But from the performance point of view, the superiority of Flow is clear, especially when compared with the "older" technology of Ethereum.
+
+\subsection{Contract Implementation Details}
+We developed two smart contracts implementing the NFT standard in both Ethereum and Flow, i.e., implementing the \textit{ERC-721} and \textit{NonFungibleToken} standards respectively. Both contracts were used after to execute the following sequence of macro actions:
+\begin{enumerate}
+    \item {Deploy the NFT contract in a network}
+    \item {Mint a NFT into a user account}
+    \item {Transfer the NFT from one user account to another}
+    \item {Burn the NFT}
+\end{enumerate}
+
+This sequence of actions were relatively straightforward to execute in the Solidity case. In Flow, there was some overhead to deal with first. Other than deploying a large contract, account creation is the most expensive atomic operation \cite{flow2024d}, both in gas and storage costs. Ethereum does not even has such function because of how fundamentally different Flow and Ethereum accounts are, but give the effort required to create one, we included this configuration step in the Flow analysis. Also, as it was indicated in Sec. \ref{sec:resource_collections}, Flow uses collection resources to simplify NFT storage. Though it is possible to save a NFT directly into a storage path, we opted to include this step as well to illustrate the impact that these overhead actions common in Flow have in the complete process.
+
+\subsection{Cost Comparison}
+We begun the comparison exercise by analysing the operational costs associated to each operation indicated, namely, how much gas was consumed per each step considered. Obtaining the gas spent for a specific set of steps is trivial. Ethereum development frameworks often include gas calculation tools that essentially keep track of the balance of the accounts involved in the process and computes the differences. We used Hardhat as the Ethereum development framework and the built-in \textit{gas reporter} tool to determine the gas expenditure indicated in Table \ref{tab:solidity_gas_reporter}:
+
+\begin{table}[ht]
+    \centering
+    \caption{Gas consumption report from Hardhat's gas reporter tool.}
+    \vspace{0.1cm}
+    \label{tab:solidity_gas_reporter}
+    \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{|ll|ll|l|ll|}
+            \hline
+            \multicolumn{2}{|l|}{Solc version: 0.8.24} & \multicolumn{2}{l|}{\multirow{2}{*}{\parbox[m]{1.8cm}{Optimizer enabled: false}}} & \multirow{2}{*}{Runs: 200} & \multicolumn{2}{l|}{\multirow{2}{*}{\parbox[m]{2.5cm}{Block limit: 6718946 gas}}}                                                                          \\ \cline{1-2}
+            \multicolumn{2}{|l|}{Methods}              & \multicolumn{2}{l|}{}                                                             &                            & \multicolumn{2}{l|}{}                                                                                                                                      \\ \hline
+            \multicolumn{1}{|l|}{Contract}             & Method                                                                            & \multicolumn{1}{l|}{Min}   & Max                                                                               & Avg                        & \multicolumn{1}{l|}{\# calls} & eur (avg) \\ \hline
+            \multicolumn{1}{|l|}{ExampleNFT}           & burn(uint256)                                                                     & \multicolumn{1}{l|}{-}     & -                                                                                 & 29592                      & \multicolumn{1}{l|}{1}        & 0.8091    \\ \hline
+            \multicolumn{1}{|l|}{ExampleNFT}           & safeMint(address, uint256, string)                                                & \multicolumn{1}{l|}{-}     & -                                                                                 & 121859                     & \multicolumn{1}{l|}{2}        & 3.3312    \\ \hline
+            \multicolumn{1}{|l|}{ExampleNFT}           & \parbox[m]{3.8cm}{safeTransferFrom(address, address, uint256)}                    & \multicolumn{1}{l|}{-}     & -                                                                                 & 58401                      & \multicolumn{1}{l|}{2}        & 1.5973    \\ \hline
+            \multicolumn{2}{|l|}{Deployments}          & \multicolumn{1}{l|}{-}                                                            & -                          & 2420549                                                                           & \multicolumn{1}{l|}{36 \%} & 66.205                                    \\ \hline
+            \multicolumn{2}{|l|}{ExampleNFT}           & \multicolumn{2}{l|}{Totals}                                                       & 2630401                    & \multicolumn{1}{l|}{}                                                             & 71.943                                                                 \\ \hline
+        \end{tabular}%
+    }
+\end{table}
+
+We configured Hardhat's \textit{gas reporter} to connect to a cryptocurrency pricing oracle, an external application to the blockchain that can be queried for off-chain data, to obtain the gas costs in EUR in real time. ETH price currently is very volatile, but the values obtained are enough to illustrate the difference, especially compared to a much cheaper option of Flow. This notion was already presented in the last row in Table \ref{tab:ethereum_flow_comparison_table}, where the average price difference is quite apparent. Flow's development framework does not offer a comparable tool to Hardhat's \textit{gas reporter}. As such we calculated these fees directly by subtracting account balances between steps. Additionally, Flow imposes a base dependency to all standardised contracts to a special contract named \textit{FlowFees}. This contract is implemented in every Flow standard, including the \textit{NonFungibleToken} standard used, to automates a series of fee based computations and to emit a \textit{FeesDeducted} event every time any fees are payed while executing instructions from the contract that implements the standard. The event is emitted with the amount paid as argument and we also captured these events to validate the balance differences calculated. We used these strategies to determine the gas costs for the previous exercise with the Cadence contract. The calculations are indicated in Table \ref{tab:FLOW_balance}:
+
+\begin{table}[ht]
+    \centering
+    \caption{FLOW token balance of each account in the exercise}
+    \vspace{0.1cm}
+    \label{tab:FLOW_balance}
+    \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{lllllll}
+            %--------------------------------------------------------------------------- GAS USED --------------------------------------------------------------------------------------------------------
+
+            \hline
+            \multicolumn{7}{|c|}{\textbf{FLOW token balance of accounts}}                                                                                                                                                                                                                                                                  \\ \hline
+            \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Tx}}} & \multicolumn{2}{c|}{\textbf{Emulator-account}}                                     & \multicolumn{2}{c|}{\textbf{account01}} & \multicolumn{2}{c|}{\textbf{account02}}                                                                                                    \\ \cline{2-7}
+            \multicolumn{1}{|c|}{}                             & \multicolumn{1}{l|}{Balance}                                                       & \multicolumn{1}{l|}{Difference}         & \multicolumn{1}{l|}{Balance}            & \multicolumn{1}{l|}{Difference} & \multicolumn{1}{l|}{Balance} & \multicolumn{1}{l|}{Difference} \\ \hline \hline
+            \multicolumn{1}{|l|}{\textbf{00}}                  & \multicolumn{1}{l|}{9.99600}                                                       & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{0}                  & \multicolumn{1}{l|}{}           & \multicolumn{1}{l|}{0}       & \multicolumn{1}{l|}{}           \\ \hline
+            \multicolumn{1}{|l|}{\textbf{01}}                  & \multicolumn{1}{l|}{9.99396}                                                       & \multicolumn{1}{l|}{-0.00204}           & \multicolumn{1}{l|}{0.001}              & \multicolumn{1}{l|}{0.00100}    & \multicolumn{1}{l|}{0.001}   & \multicolumn{1}{l|}{0.00100}    \\ \hline
+            \multicolumn{1}{|l|}{\textbf{02}}                  & \multicolumn{1}{l|}{7.99392}                                                       & \multicolumn{1}{l|}{-2.00004}           & \multicolumn{1}{l|}{1.001}              & \multicolumn{1}{l|}{1.00000}    & \multicolumn{1}{l|}{1.001}   & \multicolumn{1}{l|}{1.00000}    \\ \hline
+            \multicolumn{1}{|l|}{\textbf{03}}                  & \multicolumn{1}{l|}{7.99390}                                                       & \multicolumn{1}{l|}{-0.00002}           & \multicolumn{1}{l|}{1.001}              & \multicolumn{1}{l|}{0.00000}    & \multicolumn{1}{l|}{1.001}   & \multicolumn{1}{l|}{0.00000}    \\ \hline
+            \multicolumn{1}{|l|}{\textbf{04}}                  & \multicolumn{1}{l|}{7.99388}                                                       & \multicolumn{1}{l|}{-0.00002}           & \multicolumn{1}{l|}{1.00099}            & \multicolumn{1}{l|}{-0.00001}   & \multicolumn{1}{l|}{1.00099} & \multicolumn{1}{l|}{-0.00001}   \\ \hline
+            \multicolumn{1}{|l|}{\textbf{05}}                  & \multicolumn{1}{l|}{7.99386}                                                       & \multicolumn{1}{l|}{-0.00002}           & \multicolumn{1}{l|}{1.00099}            & \multicolumn{1}{l|}{0.00000}    & \multicolumn{1}{l|}{1.00099} & \multicolumn{1}{l|}{0.00000}    \\ \hline
+            \multicolumn{1}{|l|}{\textbf{06}}                  & \multicolumn{1}{l|}{7.99385}                                                       & \multicolumn{1}{l|}{-0.00001}           & \multicolumn{1}{l|}{1.00098}            & \multicolumn{1}{l|}{-0.00001}   & \multicolumn{1}{l|}{1.00099} & \multicolumn{1}{l|}{0.00000}    \\ \hline
+            \multicolumn{1}{|l|}{\textbf{07}}                  & \multicolumn{1}{l|}{7.99384}                                                       & \multicolumn{1}{l|}{-0.00001}           & \multicolumn{1}{l|}{1.00098}            & \multicolumn{1}{l|}{0.00000}    & \multicolumn{1}{l|}{1.00098} & \multicolumn{1}{l|}{-0.00001}   \\ \hline
+                                                               &                                                                                    &                                         &                                         &                                 &                              &
+            %--------------------------------------------------------------------------- GAS USED --------------------------------------------------------------------------------------------------------
+            \\
+            \cline{2-7}
+            \multicolumn{1}{c|}{}                              & \multicolumn{6}{l|}{\textbf{Transactions}}                                                                                                                                                                                                                                \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{00 – New service-account created}                                                                                                                                                                                                                     \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{01 – Emulator test accounts created (2)}                                                                                                                                                                                                              \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{02 – Emulator test accounts funded with 1.0 FLOW}                                                                                                                                                                                                     \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{03 – Deploy ExampleNFTContract into emulator}                                                                                                                                                                                                         \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{04 – Create a NonFungibleToken.Collection in each account}                                                                                                                                                                                            \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{05 – Mint an ExampleNFTContract.NFT into account01 Collection}                                                                                                                                                                                        \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{06 – Transfer ExampleNFT from account01 to account02}                                                                                                                                                                                                 \\ \cline{2-7}
+            \multicolumn{1}{l|}{}                              & \multicolumn{6}{l|}{07 – Burn the ExampleNFTs from account02}                                                                                                                                                                                                             \\ \cline{2-7}
+        \end{tabular}%
+    }
+\end{table}
+
+\subsubsection{Analysis}
+We included the overhead operations from Flow in this analysis and even with it, Flow is substantially cheaper to operate than Ethereum. The first conclusion from Table \ref{tab:FLOW_balance} is that most transactions cost the same value of 0.00001 FLOW (less than 0.00001€ at the time of this writing). This is the minimum fee in Flow \cite{flow2024d}, which may mean that the operation may have been even cheaper. Flow's fee system is based in three fee factors: an \textit{inclusion fee (IncFee)} to pay for the process of including the transaction into a block, transporting information, and validating signatures in the network; an \textit{execution fee (ExecFee)} to pay for FVM computations and operating on data storage, and a \textit{Surge fee (SrFee)} applied dynamically to modulate network usage and avoid surges. The total transaction cost can be calculated with: $ TxCost = (ExecFee + IncFee) \times SrFee $.
+\par
+Currently, the inclusion fee is fixed to 0.000001 FLOW, thus less than the minimum fee, and the surge factor is planned but not yet implemented. This means that, currently, transaction fees in Flow are mostly influenced by the computation effort required. But Table \ref{tab:FLOW_balance} shows that these do not exceed the minimum fee per transaction established in most cases. The most costly operations are the contract deployment and the new accounts creation, the latter substantially larger. The deployment transaction cost is proportional to the size of the contract in question. The contract used in this exercise occupies 6730 bytes of storage. Flow's documentation does not indicates the exact cost of storage per unit of memory consumed, but it estimates the cost of a deployment of a 50 KByte contract to be 0.00002965 FLOW. Our contract is substantially small, therefore the fee requested is coherent with the logic so far. The documentation also confirms that account creation is indeed the most expensive of all of Flow's base operations, but even in this case, a large part of that cost derives from the requirement for a minimum balance of 0.001 FLOW for accounts. This balance is included in the total cost of the transaction, though it is actually a transfer of funds between the account paying for the account creation process, and the new account. Without that value, the account creation process is actually twice the minimum transaction fee, i.e., 0.00002 FLOW (the cost indicated in Table \ref{tab:FLOW_balance} refers to the creation of two accounts).
+
+\end{document}
