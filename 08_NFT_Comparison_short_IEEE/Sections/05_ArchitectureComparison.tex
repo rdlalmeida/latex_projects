@@ -54,6 +54,7 @@ We developed two smart contracts implementing the NFT standard in both Ethereum 
 This sequence of actions were relatively straightforward to execute in the Solidity case. In Flow, there was some overhead to deal with first. Other than deploying a large contract, account creation is the most expensive atomic operation \cite{flow2024d}, both in gas and storage costs. Ethereum does not even has such function because of how fundamentally different Flow and Ethereum accounts are, but give the effort required to create one, we included this configuration step in the Flow analysis. Also, as it was indicated in Sec. \ref{sec:resource_collections}, Flow uses collection resources to simplify NFT storage. Though it is possible to save a NFT directly into a storage path, we opted to include this step as well to illustrate the impact that these overhead actions common in Flow have in the complete process.
 
 \subsection{Cost Comparison}
+\label{sec:cost_comparison}
 We begun the comparison exercise by analysing the operational costs associated to each operation indicated, namely, how much gas was consumed per each step considered. Obtaining the gas spent for a specific set of steps is trivial. Ethereum development frameworks often include gas calculation tools that essentially keep track of the balance of the accounts involved in the process and computes the differences. We used Hardhat as the Ethereum development framework and the built-in \textit{gas reporter} tool to determine the gas expenditure indicated in Table \ref{tab:solidity_gas_reporter}:
 
 \begin{table}[ht]
@@ -123,9 +124,43 @@ Currently, the inclusion fee is fixed to 0.000001 FLOW, thus less than the minim
 \par
 The comparison between the experiments from a cost perspective is quite extreme. The Solidity exercise required less transactions and yet it totalled almost 72 €. Flow required a series of extra operations to bring the system up to par, namely, to create a pair of extra accounts and respective collection resources, but even so, the total amount required only 2.00216 FLOW, which amounts to 1.72 €, a reduction by a factor of 42 compared to Ethereum. The Flow cost is actually a very conservative estimation of sorts. It includes 2.0 FLOW that were transferred to the two extra accounts to increase their balance above the minimum of 0.001 FLOW required to sustain the minimum of storage space and pay for transactions, which could be a much lower value and still allow the exercise to complete. On a cost basis, Flow is clearly the preferable option.
 
-\subsection{Storage Analysis}
+\subsection{Storage Comparison}
+Storage is a critical aspect to consider in blockchain applications. Writing data into a blockchain block is an expensive operation because that data is going to be replicated in network nodes. This consideration has pushed blockchain to develop efficient data manipulation methods to optimise blockchain operation. This aspect is visible in smart contract development, whose code tends to be small and very optimised, when compared to other, non-distributed, applications. Another blockchain aspect that derives from this restriction is the complexity of the process of writing data into a block. Typically, this requires a digitally signed transaction and a gas cost paid upfront.
+\par
+Considering the importance of storing data in the blockchain, particularly to NFTs that use this data (metadata) to establish their uniqueness, we run a similar analysis to the one depicted in Sec. \ref{sec:cost_comparison} but towards determining the storage space considerations for the project.
 
-\subsubsection{Flow}
+\subsubsection{Storage in Ethereum}
+Ethereum stores data in a \textit{contract-based} approach. The means that all data related to a given contract is stored \textit{referenced} to the address where the contract is deployed. Ethereum defines an "astronomically large array" indexed from the deployed contract address as the storage space of the contract. The array has $ 2^{256} $ potential slots, which is a number close to the number of atoms in the visible universe, hence the "astronomical" adjective, and each index in the array can store up to 32 Bytes \cite{Marx2018}. The "potential" derives from Ethereum only storing non-zero values, i.e., if a contract parameter has value 0, it does not count to the total storage used by the contract. Contract parameters are stored sequentially from index 0 but mappings, due to their dynamical nature, distribute their data throughout the storage space. Mappings use a key-value scheme and the index of a mapped element in storage by the hash of the key concatenated with a positional argument. This means that if a contract contains mappings or dynamic arrays, the data stored under its address is actually spread around the storage space. Which also complicates the storage analysis since Ethereum nor Solidity provides a direct way to determine the storage used, so we had to be creative and devise a method of our own for that effect. Following the logic used by Ethereum to store data, we wrote a script that checks storage slots for data, i.e., non-zero values. Table \ref{tab:space_calculations_ethereum} presents our findings.
+
+\begin{table}[ht]
+    \centering
+    \caption{Storage analysis of the Solidity NFT contract}
+    \label{tab:space_calculations_ethereum}
+    \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{ccccc}
+            \hline
+            \multicolumn{1}{|c|}{\multirow{3}{*}{\textbf{Tx}}} & \multicolumn{4}{c|}{\textbf{Storage used by the ExampleNFT Solidity contract}}                                                                                                                                      \\ \cline{2-5}
+            \multicolumn{1}{|c|}{}                             & \multicolumn{4}{c|}{0x5FbDB2315678afecb367f032d93F642f64180aa3}                                                                                                                                                     \\ \cline{2-5}
+            \multicolumn{1}{|c|}{}                             & \multicolumn{1}{c|}{\textbf{Contract Size}}                                    & \multicolumn{1}{c|}{\textbf{Simple Storage}} & \multicolumn{1}{c|}{\textbf{Mapping Storage}} & \multicolumn{1}{c|}{\textbf{Total}} \\ \hline
+            \multicolumn{1}{|c|}{00}                           & \multicolumn{1}{c|}{\multirow{4}{*}{10458}}                                    & \multicolumn{1}{c|}{96}                      & \multicolumn{1}{c|}{0}                        & \multicolumn{1}{c|}{10554}          \\ \cline{1-1} \cline{3-5}
+            \multicolumn{1}{|c|}{01}                           & \multicolumn{1}{c|}{}                                                          & \multicolumn{1}{c|}{128}                     & \multicolumn{1}{c|}{94}                       & \multicolumn{1}{c|}{10680}          \\ \cline{1-1} \cline{3-5}
+            \multicolumn{1}{|c|}{02}                           & \multicolumn{1}{c|}{}                                                          & \multicolumn{1}{c|}{128}                     & \multicolumn{1}{c|}{94}                       & \multicolumn{1}{c|}{10680}          \\ \cline{1-1} \cline{3-5}
+            \multicolumn{1}{|c|}{03}                           & \multicolumn{1}{c|}{}                                                          & \multicolumn{1}{c|}{128}                     & \multicolumn{1}{c|}{0}                        & \multicolumn{1}{c|}{10586}          \\ \hline
+            \multicolumn{1}{l}{}                               & \multicolumn{1}{l}{}                                                           & \multicolumn{1}{l}{}                         & \multicolumn{1}{l}{}                          & \multicolumn{1}{l}{}                \\ \hline
+            \multicolumn{5}{|l|}{Transactions}                                                                                                                                                                                                                                       \\ \hline
+            \multicolumn{5}{|l|}{00 - Deploy ExampleNFT Contract into the emulator}                                                                                                                                                                                                  \\ \hline
+            \multicolumn{5}{|l|}{01 - Create an ExampleNFT into account01}                                                                                                                                                                                                           \\ \hline
+            \multicolumn{5}{|l|}{02 - Transfer ExampleNFT from account01 to account02}                                                                                                                                                                                               \\ \hline
+            \multicolumn{5}{|l|}{03 - Burn the ExampleNFT from account02}                                                                                                                                                                                                            \\ \hline
+        \end{tabular}%
+    }
+\end{table}
+
+The lion share of used storage is clearly the deployed contract. The Hardhat framework used in this case actually simplifies this one step by providing a \textit{size-contracts} feature that return the storage occupied by each deployed contract. The remaining values were found by running a storage scanning script to determine how many slots are in use and the amount of data stored in each. The \textit{Simple Storage} column refers to contract parameters such as \textit{totalSupply}, \textit{nextTokenId}, etc, while the \textit{Mapping Storage} refers to values stored in Solidity mappings specifically, which are used to establish the ownership logic in NFT contracts. Solidity establishes the existence of a NFT as a set of related mapping entries. All mappings in the ExampleNFT contract considered are only used for this purpose, which is confirmed in Table \ref{tab:space_calculations_ethereum}. The NFT only "exists" in transactions 01 and 02 and that is reflected in the storage used in mappings. As soon as the token is destroyed (burned) this data is deleted.
+
+\subsubsection{Storage in Flow}
+
+Compared to Ethereum, Flow simplifies this step greatly. It does not provide a tool per se, but determining the total storage used by an account is a trivial operation in Flow. As such, we developed a simple script to return the storage used by each account involved in the exercise and run it after each step. Table \ref{tab:FLOW_storage} presents our findings.
 
 \begin{table}[ht]
     \centering
@@ -165,32 +200,13 @@ The comparison between the experiments from a cost perspective is quite extreme.
     }
 \end{table}
 
-\subsubsection{Ethereum}
-\begin{table}[]
-    \centering
-    \caption{Storage analysis of the Solidity NFT contract}
-    \label{tab:space_calculations_ethereum}
-    \resizebox{\columnwidth}{!}{%
-        \begin{tabular}{ccccc}
-            \hline
-            \multicolumn{1}{|c|}{\multirow{3}{*}{\textbf{Tx}}} & \multicolumn{4}{c|}{\textbf{Storage used by the ExampleNFT Solidity contract}}                                                                                                                                      \\ \cline{2-5}
-            \multicolumn{1}{|c|}{}                             & \multicolumn{4}{c|}{0x5FbDB2315678afecb367f032d93F642f64180aa3}                                                                                                                                                     \\ \cline{2-5}
-            \multicolumn{1}{|c|}{}                             & \multicolumn{1}{c|}{\textbf{Contract Size}}                                    & \multicolumn{1}{c|}{\textbf{Simple Storage}} & \multicolumn{1}{c|}{\textbf{Mapping Storage}} & \multicolumn{1}{c|}{\textbf{Total}} \\ \hline
-            \multicolumn{1}{|c|}{00}                           & \multicolumn{1}{c|}{\multirow{4}{*}{10458}}                                    & \multicolumn{1}{c|}{96}                      & \multicolumn{1}{c|}{0}                        & \multicolumn{1}{c|}{10554}          \\ \cline{1-1} \cline{3-5}
-            \multicolumn{1}{|c|}{01}                           & \multicolumn{1}{c|}{}                                                          & \multicolumn{1}{c|}{128}                     & \multicolumn{1}{c|}{94}                       & \multicolumn{1}{c|}{10680}          \\ \cline{1-1} \cline{3-5}
-            \multicolumn{1}{|c|}{02}                           & \multicolumn{1}{c|}{}                                                          & \multicolumn{1}{c|}{128}                     & \multicolumn{1}{c|}{94}                       & \multicolumn{1}{c|}{10680}          \\ \cline{1-1} \cline{3-5}
-            \multicolumn{1}{|c|}{03}                           & \multicolumn{1}{c|}{}                                                          & \multicolumn{1}{c|}{0}                       & \multicolumn{1}{c|}{128}                      & \multicolumn{1}{c|}{10586}          \\ \hline
-            \multicolumn{1}{l}{}                               & \multicolumn{1}{l}{}                                                           & \multicolumn{1}{l}{}                         & \multicolumn{1}{l}{}                          & \multicolumn{1}{l}{}                \\ \hline
-            \multicolumn{5}{|l|}{Transactions}                                                                                                                                                                                                                                       \\ \hline
-            \multicolumn{5}{|l|}{00 - Deploy ExampleNFT Contract into the emulator}                                                                                                                                                                                                  \\ \hline
-            \multicolumn{5}{|l|}{01 - Create an ExampleNFT into account01}                                                                                                                                                                                                           \\ \hline
-            \multicolumn{5}{|l|}{02 - Transfer ExampleNFT from account01 to account02}                                                                                                                                                                                               \\ \hline
-            \multicolumn{5}{|l|}{03 - Burn the ExampleNFT from account02}                                                                                                                                                                                                            \\ \hline
-        \end{tabular}%
-    }
-\end{table}
+The emulator-account displays an unusual large used storage but this is not relevant for our exercise. To speed up and simplify development, Flow provides its emulator environment with a series of standards already deployed into the emulator-account storage area, hence the unusual value at startup. We only make use of the \textit{NonFungibleToken} one, so most of that is not being used even.
 
-
-
+\subsubsection{Analysis}
+Flow presents itself as a more efficient alternative to save data in a blockchain. Ethereum saves data in 32-byte chunks arranged sequentially from the deployed contract address. To optimise storage, when possible, Ethereum saves two values into the same slot, if both are 16 bytes or less, by splitting one 32-byte slot into two of 16, but overall, apart from contracts, Ethereum saves data "discretely", i.e., in 32 or 16-byte chunks, except for strings, which are saved in UTF-8 using 2 bytes per character. Flow on the other hand presents a more granular storage, where data is discriminated to the byte.
+\par
+Regarding the size of the NFT construct itself, Ethereum is the better option in the sense that it produces a smaller data footprint. It is important to note that the NFT created in Flow was blank, i.e., without any additional metadata other than the bare minimum required by the standard, while the version in Ethereum was created with the recipient account address as metadata, stored as a UTF-8 string, and even so, Ethereum NFT was computed at 94 bytes of storage, while a programmatically smaller NFT from Flow required 163 bytes. Flow has a significantly more storage overhead than Ethereum, as in the data required for minimal functionality, but it still maintains a higher transactional throughput nonetheless. Though Flow does require more storage in absolute values, but price for storage in Flow, both in storage and transaction fees, is much less than in Ethereum, which makes this apparent disadvantage meaningless.
+\par
+Overall, Flow is still the better option in this case. Storage in Ethereum is a thorny issue in great part because of how expensive ETH has become as well. Also, this chain has a slower block rate than Flow, which means a lower rate of data writes, since these require transactions finalised in blocks. Flow does write more data to achieve similar functionality, but does so in a inexpensive and faster fashion, which balances the preference to its side.
 
 \end{document}
