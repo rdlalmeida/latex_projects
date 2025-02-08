@@ -1,4 +1,12 @@
 {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "cSpell.language": "en-GB,en"
+    "cSpell.language": "en-GB,en",
+    "cSpell.customDictionaries": {
+        "custom-dictionary-workspace": {
+            "name": "custom-dictionary-workspace",
+            "path": "${workspaceFolder:03_ArchitectureProposal}/.cspell/custom-dictionary-workspace.txt",
+            "addWords": true,
+            "scope": "workspace"
+        }
+    }
 }

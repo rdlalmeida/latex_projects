@@ -2,7 +2,6 @@
 \graphicspath{{\subfix{../Images}}}
 
 \begin{document}
-\subsection{General Approach}
 The e-voting system proposed in this article uses smart contracts to establish an NFT-based framework that uses these tokens as the main abstractors of votes, as in data that establishes the choices of a voter in an election in a non-ambiguous fashion. We use the features offered by the NFT standards indicated in Section \ref{introduction_nfts} to establish mechanisms for transporting these tokens along the system while simultaneously protecting both the identity and the choices of a voter in a transparent and secure way. Fig. \ref{fig:general_architecture} presents a metadata-storage agnostic general diagram for this proposal.
 
 \begin{figure}[htp]
@@ -14,7 +13,7 @@ The e-voting system proposed in this article uses smart contracts to establish a
 
 The proposed system is not a fully centralised one, as can be stated from Fig. \ref{fig:general_architecture}, mainly due to the intrinsically restrictive nature of elections, which typically establish \textit{a priori} rules to determine who is eligible to vote or not. The ample nature of these rules (age limit, professional background, nationality, membership in an organisation, etc.) requires the existence of a trusted third party to define and enforce them.
 
-\paragraph{Voting Process}
+\subsection{Voting Process}
 \begin{enumerate}
     \item{The process begins with a voter interacting with one of the voting booth smart contracts in the available set. Providing multiple points of entry into the system via the creation of multiple but functionally identical voting booth smart contracts increases availability and security by multiplying the effort that an adversary has to endure to pervert the system to his or her favour by a similar factor. Users interact with the contract by calling a public function that starts by inferring the eligibility status of the user.}
 
@@ -45,11 +44,11 @@ The proposed system is not a fully centralised one, as can be stated from Fig. \
 
 The general approach described morphs into two different systems depending on the type of data storage paradigm employed by the blockchain used to implement this system. Sections \ref{contract-based-approach} and \ref{account-based-approach} detail the two options in greater detail.
 
-\subsection{Contract-based Approach}
+\section{Contract-based Approach}
 \label{contract-based-approach}
-\subfile{./05_ContractBasedApproach.tex}
+\subfile{./06_ContractBasedApproach.tex}
 
-\subsection{Account-based Approach}
+\section{Account-based Approach}
 \label{account-based-approach}
-\subfile{./06_AccountBasedApproach.tex}
+\subfile{./07_AccountBasedApproach.tex}
 \end{document}
