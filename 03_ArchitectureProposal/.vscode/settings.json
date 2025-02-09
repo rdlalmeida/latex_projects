@@ -8,5 +8,8 @@
             "addWords": true,
             "scope": "workspace"
         }
-    }
+    },
+    "cSpell.words": [
+        "Polkadot"
+    ]
 }

@@ -11,7 +11,7 @@ Fig. \ref{fig:account_based_architecture} displays the proposal system under an 
     \label{fig:account_based_architecture}
 \end{figure}
 
-The main difference with this approach is that, in this case, the Vote NFT is always stored under the account of the element that holds the token at a given point in the process, i.e., the Vote NFT is actually moved through distinct storage locations throughout the process, which are abstracted and referenced as accounts, as opposed to the contract-based approach, where the only changes are to the internal mappings of the NFT-generating contract, typically indicating which address controls which NFT. From a voter's perspective, he or she should not detect any changes in the voting experience.
+The main difference with this approach is that, in this case, the Ballot NFT is always stored under the account of the element that holds the token at a given point in the process, i.e., the Ballot NFT is actually moved through distinct storage locations throughout the process, which are abstracted and referenced as accounts, as opposed to the contract-based approach, where the only changes are to the internal mappings of the NFT-generating contract, typically indicating which address controls which NFT. From a voter's perspective, he or she should not detect any changes in the voting experience.
 
 \subsection{Account-based Blockchain to use}
 For this case, we considered the Flow blockchain for two main reasons:
@@ -28,7 +28,7 @@ For this case, we considered the Flow blockchain for two main reasons:
 \end{enumerate}
 
 \subsubsection{Account model in Flow}
-\label{flow_accounts}
+\label{sec:flow_accounts}
 An account in Flow consists of a record for a specific blockchain state. This record consists of:
 
 \begin{itemize}
@@ -66,13 +66,13 @@ Flow also establishes a base value of 100 kB of storage space that remains avail
 \end{enumerate}
 
 \paragraph{Storage domains}
-\label{storage_domains}
+\label{sec:storage_domains}
 Each account in Flow has two domains that define its storage space: \textit{/storage} and \textit{/public} \cite{flow2024}. Flow uses UNIX-style paths to reinforce the notion that these are used to uniquely identify a digital object in a storage area, similar to the path of a file or directory in a UNIX system.
 \par
 All resources stored in an account's storage go into the \textit{/storage} domain by default. Only the account owner(s) have access to this domain, for both write and read privileges. This means that any resource transferred into an account, either through a transaction or a functionally equivalent smart contract function, becomes private by default as soon as it is stored. To allow for external access, the controlling user must move that resource to either the \textit{/public} or \textit{/private} domains. Data in the \textit{/public} domain is available to everyone. The \textit{/private} domain, despite the name, actually sits somewhere between the \textit{/storage} and \textit{/public} domains regarding access. Data stored in this domain is only available to the owner and to users previously authorised by the owner.
 
 \paragraph{Capabilities}
-\label{capabilities_references}
+\label{sec:capabilities_references}
 \textit{Capabilities} are tools used in the Flow blockchain to delegate access to resources (data objects). An account controller creates \textit{capabilities}, which are akin to a memory pointer in that instead of referencing a memory position, they reference a specific resource stored in the account where the \textit{capability} was created. \textit{Capability} creation changes the state of the blockchain; therefore, it needs to be done in a transaction digitally signed by the account owner to be executed. These requisites restrict the creation of \textit{capabilities} to the owner of the resource in question.
 \par
 Flow distributes \textit{capabilities} among account holders using a messaging system. Once created, the account owner publishes the \textit{capability} to the \textit{/public} domain of his/her account storage. From here, other users can \textit{borrow} (Flow names the API function used to retrieve a reference as \textit{borrow} to reinforce this notion) a reference to the object from the capability.
