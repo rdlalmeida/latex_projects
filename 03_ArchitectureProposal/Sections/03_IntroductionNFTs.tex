@@ -17,12 +17,6 @@ Bitcoin was the only research alternative until the introduction of Ethereum in 
 \par
 NFTs and smart contracts provide much more efficient and flexible means to achieve the same result. As indicated, NFTs are defined as digital objects, i.e., a pre-defined data structure that can contain several internal parameters, or even other objects if needed. Minting NFTs writes their metadata into a block. Depending on the blockchain architecture, this data can be changed afterwards, but, typically, changes to the NFT metadata require a digitally signed transaction, which can only be produced by the owner of the account that owns that NFT.
 
-\subsection{Contract-based vs. Account-based Blockchains}
-\label{sec:contract-to-account-storage}
-Contract-based blockchains store NFT metadata relative to the address of the NFT-implementing contract, often through an address-to-NFT-id mapping. For account-based blockchains such as Flow, NFTs are always and uniquely stored in an account-based location, which can be the minting contract account (address to where the NFT contract was deployed), another contract, or a user account.
-\par
-In a contract-based blockchain, the information of every NFT minted by a contract is always visible in the deployed contract code, and the contract contains all information related to the NFT, as well as the structures that implement its ownership. Deleting a contract from the blockchain permanently erases all NFT information, including metadata and ownership records.
-
 \subsubsection{Token Burning}
 Token ownership in a blockchain is abstracted by the ability of a user to access the containing account, namely, the capability of that user to generate a valid digital signature that can sign a transaction to transfer that token to some other location. Deriving an account address from a private encryption key is trivial, but the opposite is computationally infeasible. The blockchain establishes ownership mechanics through this asymmetrical relationship.
 \par

@@ -1,0 +1,17 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../Images}}}
+
+\begin{document}
+% // TODO: All of this
+
+
+\subsection{Contract-based vs. Account-based Blockchains}
+\label{sec:contract-to-account-storage}
+Contract-based blockchains store NFT metadata relative to the address of the NFT-implementing contract, often through an address-to-NFT-id mapping. For account-based blockchains such as Flow, NFTs are always and uniquely stored in an account-based location, which can be the minting contract account (address to where the NFT contract was deployed), another contract, or a user account.
+\par
+In a contract-based blockchain, the information of every NFT minted by a contract is always visible in the deployed contract code, and the contract contains all information related to the NFT, as well as the structures that implement its ownership. Deleting a contract from the blockchain permanently erases all NFT information, including metadata and ownership records.
+
+This
+\subsection{Something more}
+And more of this as well
+\end{document}
