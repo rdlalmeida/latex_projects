@@ -1,0 +1,106 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+%Template version as of 6/27/2024
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\graphicspath{{Image/}}
+\usepackage{textcomp}
+\usepackage{subfiles}
+\usepackage{soul}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{lmodern}
+
+\usepackage{siunitx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[super]{nth}
+
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{xurl}
+\usepackage{changepage}
+\usepackage{soul}
+
+\usepackage[english]{babel}
+\usepackage{combelow}
+\usepackage{todonotes}
+
+
+
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+%\title{Analysis of a Non-Fungible Token centric Blockchain Architecture and Comparison with a General Purpose Blockchain}
+
+\title{Let the NFTs flow: A Comparison Between NFTs on Ethereum and the Flow Blockchain}
+
+% \author{\IEEEauthorblockN{1\textsuperscript{st} Ricardo Lopes Almeida}
+%     \IEEEauthorblockA{\textit{Università di Camerino} \\
+%         \textit{Università di Pisa}\\
+%         Camerino and Pisa, Italia \\
+%         ricardo.almeida@unicam.it}
+%     \and
+%     \IEEEauthorblockN{2\textsuperscript{nd} Fabrizio Baiardi}
+%     \IEEEauthorblockA{\textit{Dipartimento di Informatica} \\
+%         \textit{Università di Pisa}\\
+%         Pisa, Italia \\
+%         fabrizio.baiardi@unipi.it}
+%     \and
+%     \IEEEauthorblockN{3\textsuperscript{rd} Damiano Di Francesco Maesa}
+%     \IEEEauthorblockA{\textit{Dipartimento di Informatica} \\
+%         \textit{Università di Pisa}\\
+%         Pisa, Italia \\
+%         damiano.difrancesco@unipi.it}
+%     \and
+%     \IEEEauthorblockN{4\textsuperscript{th} Laura Ricci}
+%     \IEEEauthorblockA{\textit{Dipartimento di Informatica} \\
+%         \textit{Università di Pisa}\\
+%         Pisa, Italia \\
+%         laura.ricci@unipi.it}
+% }
+
+\maketitle
+
+\begin{abstract}
+    \textit{Non-Fungible Tokens (NFTs)} are among the most recent and promising additions to the blockchain universe. The usefulness of this concept triggered several public blockchains to offer support in this regard, starting with Ethereum, one of the popular and flexible blockchains. This support manifests itself through the ability of defining these tokens with smart contract programming. Ethereum defined itself as the reference for NFT development, establishing in the process token standards that are widely used today. This support also triggered the exploration of this concept through the development and deployment of NFT-based projects in the network, which created a rich application ecosystem, but it also revealed limitations in scalability and a lack of sufficient throughput in the network. One attempt to solve these issues resulted in the creation of Flow, a new blockchain launched in 2020 that was built from scratch with NFT support in mind.
+    This paper focuses on the alternative NFT architecture introduced with Flow, namely, how it is structured, the main differences with a general solution such as Ethereum, and how a NFT contract implemented in this new paradigm compares with an Ethereum implementation. The paper presents experimental results showing the benefits of Flow in implementing NFTs.
+\end{abstract}
+
+
+\begin{IEEEkeywords}
+    Blockchain, Non-Fungible Tokens, Ethereum, Flow, Solidity, Cadence
+\end{IEEEkeywords}
+
+% SUBFILES
+\subfile{./Sections/01_Introduction.tex}
+
+\subfile{./Sections/02_RelatedWorks.tex}
+
+
+\subfile{./Sections/03_FlowBlockchain.tex}
+
+\subfile{./Sections/04_CadenceImplementation.tex}
+
+\subfile{./Sections/05_ArchitectureComparison.tex}
+
+\subfile{./Sections/06_Conclusion.tex}
+
+% SUBFILES
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,Bibliography.bib}
+\end{document}
