@@ -2,16 +2,24 @@
 \graphicspath{{\subfix{../Images}}}
 
 \begin{document}
-% // TODO: All of this
-
-
-\subsection{Contract-based vs. Account-based Blockchains}
-\label{sec:contract-to-account-storage}
-Contract-based blockchains store NFT metadata relative to the address of the NFT-implementing contract, often through an address-to-NFT-id mapping. For account-based blockchains such as Flow, NFTs are always and uniquely stored in an account-based location, which can be the minting contract account (address to where the NFT contract was deployed), another contract, or a user account.
+\subsection{Contract-based NFT Architecture}
+NFTs implemented under a contract-based approach have all their information, namely token metadata and ownership records, stored in the blockchain in a memory location dependent from the deployment address for the smart contract that implements the token. Ethereum is a good example of a contract-based blockchain. NFTs in Ethereum are created and regulated by smart contracts deployed in the network. The contract code is stored in a block whose address works as the base for memory allocation within the scope of the contract.
 \par
-In a contract-based blockchain, the information of every NFT minted by a contract is always visible in the deployed contract code, and the contract contains all information related to the NFT, as well as the structures that implement its ownership. Deleting a contract from the blockchain permanently erases all NFT information, including metadata and ownership records.
+This approach allows for simpler NFT deployments. Also, all NFT related information is kept in in the same location as the smart contract itself, which makes these contracts easier to analyse regarding determining the state of NFTs minted by it. On the other hand, it also provides a single point of failure for this system. If the smart contract is deleted, all NFT information is deleted as well, thus destroying all NFTs minted from the contract as well.
 
-This
-\subsection{Something more}
-And more of this as well
+\subsection{Account-based Architecture}
+Account-based blockchains are more complex due to the added capabilities of their accounts. In these blockchains, an account is more than a balance pointer. It also includes a storage space area that can store smart contract code and other digital objects.
+\par
+NFTs in this context are programmable digital objects, quite similar to the ones produced by object-oriented programming languages, thus fairly more complex from the software perspective than their contract-based counterparts. NFTs in account-based models have internal parameters as well as their own functions, all inside a neat software wrapper that makes these constructs more complex to build, but more easier to understand. Minting one of these NFTs is similar to creating a new object from a software class.
+\par
+In this model, smart contract code is stored in a different location than any digital objects that it can produce. In this regard, contracts can produce objects and store them in the same address, or transfer them immediately after creation to another account. This removes the limitation identified previously in the contract-based approach. Deleting a contract from an account-based blockchain does not destroy the tokens, or other digital objects, produced thus far. It may diminish their capabilities, since it is not possible to refer to the minting contract anymore, but it does not invalidate any products from it.
+
+\subsection{Resources in Account-based Blockchains}
+\label{sec:resources_account_blockchains}
+Account-based blockchains create an environment where accounts are independent objects, accessible and modifiable only by their owners, and capable of storing digital objects independently from the smart contracts that create them. The move away from a more centralised architecture, as it happens with the contract-based approach, creates issues regarding the uniqueness of digital objects, such as NFTs.
+\par
+Towards addressing this issue, account-based blockchains developed a \textit{Resource-Oriented Paradigm (ROP)}, a programming paradigm conceptually similar to the Object-Oriented Paradigm (OOP) from general purpose programming languages such as Java or C++. Resources are digital objects characterised by internal parameters and functions, thus similar to the objects created under a OOP paradigm, but with key differences: resources can only exist in one logical location at a time. Once created, resources need to either be saved into storage or explicitly destroyed at the end of the process that creates them. Resources cannot be copied and each must be unique in the system, i.e., the digital object representing one must have a unique set of internal parameters. The uniqueness requirement is often met by establishing a base id parameter and ensuring that each digital object produced under the specification gets a different id. These requirements are usually abstracted into token standards which, when imported into a contract, behave as a list of requirements that the contract must fulfil to become functional.
+\par
+The mechanics that regulate resources in this type of blockchains allow for these objects to exists outside of the boundaries of the minting contract. Resources can be stored and transferred between accounts independently from where and if the minting contract is deployed. It also allows for these digital objects to remain functional if the minting contract gets deleted, thus making for more reliable and flexible, albeit more complex and resource demanding, blockchains.
+
 \end{document}

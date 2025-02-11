@@ -5,9 +5,41 @@
 \subsection{Data Encryption}
 In order to achieve and maintain voter privacy, data published in a publicly accessible ledger needs, at least, a layer of encryption to be applied to it before entering the public structure. This encryption must provide two functionalities: prevent other users from determining the voting options of a specific voter or voters and prevent the calculation of the final tally before the intended process step.
 \par
-Asymmetrical encryption schemes are a simple and efficient solution for this problem. Our proposed system maintains three essential actors: voters, voting booth contracts, and the tally contract. Each actor can create a pair of asymmetrical keys and distribute the public key, but for our specific case, this task is limited to the smart contracts, i.e., voting both and tally. This removes some complexity from the voter perspective and deposits it into programmable software scripts, which allows for an automation of this process. As such, each voting booth contract and the tally contract generate a pair of asymmetrical encryption keys, with the public key in each one provided to a voter alongside the Ballot NFT used to contain their election choices.
+Asymmetrical encryption schemes are a simple and efficient solution for this problem. Our proposed system maintains three essential actors: voters, voting booth contracts, and the tally contract. Each actor can create a pair of asymmetrical keys and distribute the public key, but for our specific case, this task is limited to the smart contracts. This removes complexity from the voter perspective and deposits it into programmable software scripts. As such, each voting booth contract and the tally contract generate a pair of asymmetrical encryption keys, with the public key in each one provided to a voter alongside the Ballot NFT used to contain their election choices.
 \par
-Section \ref{sec:multiple_vote_casting} presents a detailed exposition on the encryption scheme.
+From this generalised scheme, we were able to identify four potential approaches to address vote data privacy, each one related to an encryption key sharing scheme:
+
+\begin{itemize}
+    \item{\textbf{Each voting booth smart contract uses a different public key from an asymmetric encryption pair to encrypt any sensible information before setting it as the NFT's metadata.} Smart contract code is transparent once it is published on the blockchain, so it is not possible for the contract to store the private key from that pair without invalidating the encryption itself.
+          \par
+          To maintain a level of decoupling, voting booth smart contracts can only encrypt data while keeping decryption functionalities limited to the tallying contract. This is not a limitation of the technology but a security strategy. The transparency argument also applies to the tally contract, which means that we cannot store any private encryption keys in it without invalidating the encryption scheme. As we have established in Section \ref{sec:general_approach}, our solutions assume the existence of a trusted third party, which can be used to store the private pairs of the encryption keys used, under reasonable safety. This encryption problem can be solved by implementing the decryption function in the tally contract only, but in such a way that it requires the private encryption keys to be provided as inputs to the function as well as the data to be decrypted. Fig. \ref{fig:multiple_encryption_key_scheme} exemplifies the process described thus far.
+          \par
+          The system is more secure if each voting booth smart contract uses a different encryption key, but this security comes at the cost of increased system complexity. Decrypting the data requires multiple inputs, and a single erroneous byte in the transmission of one of the private keys can invalidate the whole election.}
+
+          \begin{figure}[htp]
+              \centering
+              \includegraphics[width=0.7\textwidth]{../Images/ContractBasedSolution_encryption_mult_keys.png}
+              \caption{Metadata encryption scheme using multiple encryption key pairs.}
+              \label{fig:multiple_encryption_key_scheme}
+          \end{figure}
+
+    \item{\textbf{All voting booth smart contracts use the same public key from an asymmetrical encryption pair to protect NFT metadata.} This approach is functionally similar to the previous one but logistically simpler because all NFT metadata is encrypted with the same key.
+          \par
+          In this case, only one encryption key pair gets generated, with the public key freely distributed and used over the whole system and the private key safely guarded by a trusted third party. As with the previous case, voting booth smart contracts can only encrypt data, with the decrypting responsibilities falling solely on the tallying contract and the correct input of the private encryption key from the trusted third party.
+          \par
+          This alternative achieves a simpler system though through the sacrifice of security. It is logistically simpler to keep a single key secure than multiple ones. Fig. \ref{fig:single_encryption_key_scheme} illustrates this approach.}
+
+          \begin{figure}[htp]
+              \centering
+              \includegraphics[width=0.7\textwidth]{../Images/ContractBasedSolution_encryption_single_key.png}
+              \caption{Metadata encryption scheme using a single encryption key pair.}
+              \label{fig:single_encryption_key_scheme}
+          \end{figure}
+
+    \item{\textbf{Use a threshold cryptosystem and homomorphic properties} to keep vote data encrypted throughout the whole process. If a threshold cryptosystem is used to encrypt the vote data, we can use homomorphic operations directly on the encrypted data to calculate a (still encrypted) final tally, the only element requiring decryption in this scenario \cite{Benaloh1986b} \cite{Rjaskova2002}.}
+
+    \item{\textbf{Use Adi Shamir's Secret Sharing scheme \cite{Shamir1979}} to split a private key $ D $ from an asymmetrical encryption key pair into $ n $ pieces. Shamir's secret sharing scheme requires that only $ k $ of these pieces be able to reconstruct $ D $. This scheme also requires the use of a \textit{(k, n)} threshold cryptosystem, where $ n = 2k - 1 $. With such a scheme, an adversary needs to obtain at least $ k $ pieces to be able to subvert the system while being able to use a single encryption key for all. As long as an adversary is unable to obtain as many as $ k - 1 $ pieces, reconstructing $ D $ is still computationally infeasible. This scheme effectively combines the advantages of the first two discussed with a minimal increment in solution complexity.}
+\end{itemize}
 
 \subsubsection{Data Obfuscation}
 \label{sec:data_obfuscation}
